@@ -7,11 +7,11 @@ cd powerlevel10k-media
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	if [[ "$(id -u)" == "0"* ]]; then
-		mkdir -p /usr/local/share/font/MesloLGS\ NF
-		cp ./*.ttf /usr/local/share/font/MesloLGS\ NF
+		mkdir -p /usr/local/share/fonts/MesloLGS\ NF
+		cp ./*.ttf /usr/local/share/fonts/MesloLGS\ NF
 	else
-		mkdir -p ~/.local/share/font/MesloLGS\ NF
-		cp ./*.ttf ~/.local/share/font/MesloLGS\ NF
+		mkdir -p ~/.fonts/MesloLGS\ NF
+		cp ./*.ttf ~/.fonts/MesloLGS\ NF
 	fi
 	fc-cache
 elif [[ "$OSTYPE" == "darwin"* ]]; then
