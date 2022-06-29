@@ -1,3 +1,7 @@
+OLD_PWD=$PWD
+
+mkdir -p ~/temp_font_install
+cd ~/temp_font_install
 git clone https://github.com/romkatv/powerlevel10k-media
 cd powerlevel10k-media
 
@@ -8,3 +12,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	cp ./*.ttf ~/Library/Fonts
 fi
+
+cd $OLD_PWD
+rm -rf ~/temp_font_install
