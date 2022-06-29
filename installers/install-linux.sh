@@ -16,8 +16,3 @@
   else
     echo "Invalid Distro/Option"
   fi
-
-# download necessary files
-
-
-

@@ -1,9 +1,8 @@
 #!/bin/zsh
 
-# install omz first
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
 brew tap homebrew/homebrew-cask-versions
+
+source "./install-common.sh"
 
 # main apps
 brew install qalculate-gtk
@@ -26,14 +25,6 @@ brew install --cask virtualbox-extension-pack
 
 # development
 
-# node + nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-nvm install 17 && nvm use 17
-corepack enable
-
 brew install cmake
 brew install go
 brew install python3
@@ -51,16 +42,9 @@ brew install --cask battle-net
 brew install --cask multimc
 
 
-# symlink configs
-
-source './symlinks.sh'
-
-cd .vim/pack/ycm/start/YouCompleteMe
-./install.py --all
-cd /.dotfiles
-rm -rf ~/.dotfiles/.vim/pack/ycm/start/YouCompleteme/third_party/ycmd/third_party/tern_runtime
-
+source "./install-common-post.sh"
 alias vim=/usr/local/bin/vim
+source "../symlinks/symlink-mac.sh"
 
 # other settings
 defaults write -g ApplePressAndHoldEnabled -bool false
