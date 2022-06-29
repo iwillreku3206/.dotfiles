@@ -176,6 +176,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+bindsym $mod+Mod1+Right move workspace to output right
+bindsym $mod+Mod1+Left move workspace to output left
+
 bindsym $mod+space exec "rofi -show drun"
 bindsym $mod+Tab exec "rofi -show window"
 
