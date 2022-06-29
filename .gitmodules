@@ -1,0 +1,15 @@
+[submodule ".vim/pack/material.vim/start/material.vim"]
+	path = .vim/pack/material.vim/start/material.vim
+	url = https://github.com/kaicataldo/material.vim.git
+[submodule ".vim/pack/typescript/start/typescript-vim"]
+	path = .vim/pack/typescript/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/pack/vim-jsx-typescript/start/vim-jsx-typescript"]
+	path = .vim/pack/vim-jsx-typescript/start/vim-jsx-typescript
+	url = https://github.com/peitalin/vim-jsx-typescript
+[submodule ".vim/pack/ycm/start/YouCompleteMe"]
+	path = .vim/pack/ycm/start/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe.git
+[submodule ".vim/pack/vim-javascript/start/vim-javascript"]
+	path = .vim/pack/vim-javascript/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
