@@ -1,1 +1,1 @@
-.dotfiles/.vim
+/home/rek/.dotfiles/.vim
