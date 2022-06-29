@@ -1,0 +1,75 @@
+mainbox, window {
+	background-color: #1e0a52;
+	padding: 0.5em;
+}
+
+mainbox {
+	border: 0;
+	padding: 0;
+}
+
+// inputbar
+
+entry  {
+	text-color: white;
+	placeholder-color: #7c3ec2;
+	background-color: inherit;
+	placeholder: "Type to search...";
+}
+
+prompt {
+	text-color: #7c3ec2;
+	background-color: inherit;
+}
+
+inputbar {
+	children: [entry];
+	background-color: inherit;
+	border-bottom-width: 2px;
+	border-bottom-color: #3b0ba1;
+	margin-bottom: 1em;
+}
+
+// list
+
+listview {
+	margin-top: 1em;
+	border-color: #4000c9;
+	background-color: inherit;
+	children: [element, scrollbar];
+	scrollbar: true;
+}
+
+scrollbar {
+	handle-width: 4px;
+	handle-color: #6613c4;
+	background-color: #541799;
+}
+
+element {
+	children: [element-icon, element-text];
+	border: 0;
+	background-color: inherit;
+	padding: 0.25em;
+}
+
+element-text {
+	text-color: white;
+	background-color: inherit;
+}
+
+element selected {
+	background-color: #411170;
+}
+
+element-text selected {
+	background-color: inherit;
+}
+
+element-icon {
+	background-color: #00000000;
+}
+
+element-icon selected {
+	background-color: inherit;
+}
