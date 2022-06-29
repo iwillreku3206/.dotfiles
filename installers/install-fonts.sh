@@ -7,3 +7,4 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	fc-cachehe
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	cp ./*.ttf ~/Library/Fonts
+fi
