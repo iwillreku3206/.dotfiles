@@ -20,3 +20,5 @@ colorscheme material
 
 " set the color of background (for transparent bg in terminal)
 highlight Normal ctermbg=black
+
+autocmd BufRead,BufNewFile *.libsonnet set filetype=jsonnet
