@@ -1,7 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =5
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/rek/Coding/dashlabsai/infra-argocd-app-of-apps/src/apps/dashlabs-medbase-microservice'
+let g:netrw_dirhist_0='/home/rek/Coding/dashlabsai/infra-argocd-app-of-apps/src/apps/api-service'
+let g:netrw_dirhist_9='/home/rek/Coding/dashlabsai/infra-argocd-app-of-apps/src/apps'
+let g:netrw_dirhist_8='/home/rek/Coding/dashlabsai/infra-argocd-app-of-apps/src'
+let g:netrw_dirhist_7='/home/rek/Coding/dashlabsai/infra-argocd-app-of-apps'
+let g:netrw_dirhist_6='/home/rek/.dotfiles'
 let g:netrw_dirhist_5='/home/rek/Coding/dashlabsai/mongomq/src'
 let g:netrw_dirhist_4='/home/rek/Coding/dashlabsai/mongomq'
 let g:netrw_dirhist_3='/home/rek/.config'
 let g:netrw_dirhist_2='/home/rek/.config/fontconfig'
-let g:netrw_dirhist_1='/etc/tigervnc'
