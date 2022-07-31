@@ -1,0 +1,14 @@
+{
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      // customize filetypes to your needs
+      "filetypes": ["typescript", "typescriptreact", "graphql"]
+    }
+  },
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.format.enable": true,
+  "eslint.autoFixOnSave": true,
+  "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "typescript", "javascript", "javascriptreact", "html"]
+}
