@@ -21,6 +21,7 @@ code --install-extension rust-lang.rust
 code --install-extension seatonjiang.gitmoji-vscode
 code --install-extension serayuzgur.crates
 code --install-extension sonarsource.sonarlint-vscode
+code --install-extension steoates.autoimport
 code --install-extension vscode-icons-team.vscode-icons
 code --install-extension vscodevim.vim
 code --install-extension wakatime.vscode-wakatime
