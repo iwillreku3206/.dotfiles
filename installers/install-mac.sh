@@ -22,6 +22,7 @@ brew install --cask macs-fan-control
 brew install --cask onlyoffice
 brew install --cast virtualbox
 brew install --cask virtualbox-extension-pack
+brew install --cask jellyfin-media-player
 
 # development
 
@@ -29,6 +30,8 @@ brew install cmake
 brew install go
 brew install python3
 brew install vim
+brew install nvim
+brew install jesseduffield/lazygit/lazygit
 
 brew install --cask dotnet-sdk
 brew install --cask temurin8
