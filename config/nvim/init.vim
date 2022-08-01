@@ -15,12 +15,21 @@ Plug 'alec-gibson/nvim-tetris'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/jsonc.vim'
 Plug 'google/vim-jsonnet'
+Plug 'kdheepak/lazygit.nvim'
+Plug 'nvim-lualine/lualine.nvim'
 
 call plug#end()
 
 colorscheme dracula
 lua require("nvim-tree").setup()
 lua require("toggleterm").setup()
+lua << END
+require('lualine').setup({
+  options = {
+    theme = 'powerline_dark'
+  }
+})
+END
 let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-html',
@@ -48,3 +57,4 @@ tmap <C-`> <C-\><C-n><C-`>
 nmap <C-`> :ToggleTerm direction=horizontal<CR>
 inoremap <silent><expr> <C-space> coc#refresh()
 nmap <silent> <S-F12> <Plug>(coc-definition)
+nnoremap <silent> <leader>gg :LazyGit<CR>
