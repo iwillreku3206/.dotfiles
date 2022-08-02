@@ -55,6 +55,8 @@ map <silent><C-o> :NvimTreeOpen<CR>
 map <C-i> <Nop>
 tmap <C-A-t> <C-\><C-n><C-A-t>
 nmap <C-A-t> :ToggleTerm direction=horizontal<CR>
+tmap <C-`> <C-\><C-n><C-A-`>
+nmap <C-`> :ToggleTerm direction=horizontal<CR>
 
 inoremap <silent><expr> <C-space> coc#refresh()
 nmap <silent> <S-F12> <Plug>(coc-definition)
