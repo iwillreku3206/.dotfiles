@@ -59,3 +59,5 @@ nmap <C-A-t> :ToggleTerm direction=horizontal<CR>
 inoremap <silent><expr> <C-space> coc#refresh()
 nmap <silent> <S-F12> <Plug>(coc-definition)
 nnoremap <silent> <C-g> :LazyGit<CR>
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
