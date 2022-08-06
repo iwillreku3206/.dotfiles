@@ -2,6 +2,7 @@ set number
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set termguicolors
 
 source ~/.dotfiles/config/nvim/plug.vim
 call plug#begin()
@@ -17,6 +18,10 @@ Plug 'neoclide/jsonc.vim'
 Plug 'google/vim-jsonnet'
 Plug 'kdheepak/lazygit.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/nvim-lsp-installer'
+Plug 'princejoogie/tailwind-highlight.nvim'
+Plug 'norcalli/nvim-colorizer.lua'
 
 call plug#end()
 
@@ -34,7 +39,6 @@ let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-html',
       \'coc-css',
-      \'coc-tailwindcss',
       \'coc-cmake',
       \'coc-docker',
       \'coc-eslint',
@@ -46,10 +50,26 @@ let g:coc_global_extensions = [
       \'coc-pyright',
       \'coc-sh',
       \'coc-clangd',
+      \'coc-emmet',
       \'coc-phpls',
       \'@yaegassy/coc-tailwindcss3',
       \'coc-prettier']
 
+lua require'colorizer'.setup()
+
+lua <<END
+local tw_highlight = require('tailwind-highlight')  
+require('lspconfig').tailwindcss.setup({
+  on_attach = function(client, bufnr)
+  -- rest of you config
+    tw_highlight.setup(client, bufnr, {
+      single_column = false,
+      mode = 'background',
+      debounce = 200,
+    })
+  end
+})
+END
 
 map <silent><C-o> :NvimTreeOpen<CR>
 map <C-i> <Nop>
@@ -62,4 +82,4 @@ inoremap <silent><expr> <C-space> coc#refresh()
 nmap <silent> <S-F12> <Plug>(coc-definition)
 nnoremap <silent> <C-g> :LazyGit<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
