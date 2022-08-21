@@ -53,7 +53,8 @@ let g:coc_global_extensions = [
       \'coc-emmet',
       \'coc-phpls',
       \'@yaegassy/coc-tailwindcss3',
-      \'coc-prettier']
+      \'coc-prettier',
+      \'coc-phpls']
 
 lua require'colorizer'.setup()
 
@@ -74,7 +75,7 @@ END
 map <silent><C-o> :NvimTreeOpen<CR>
 map <C-i> <Nop>
 tmap <C-A-t> <C-\><C-n><C-A-t>
-nmap <C-A-t> :ToggleTerm direction=horizontal<CR>
+nmap <C-A-t> :ToggleTerm direction=horizontal<CR><Ins>
 tmap <C-`> <C-\><C-n><C-A-`>
 nmap <C-`> :ToggleTerm direction=horizontal<CR>
 
