@@ -10,5 +10,6 @@
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.format.enable": true,
   "eslint.autoFixOnSave": true,
-  "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "typescript", "javascript", "javascriptreact", "html"]
+  "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "typescript", "javascript", "javascriptreact", "html"],
+  "Lua.diagnostics.globals": ["vim"]
 }
