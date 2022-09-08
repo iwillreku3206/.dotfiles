@@ -46,7 +46,6 @@ brew install --cask multimc
 
 
 source "./install-common-post.sh"
-alias vim=/usr/local/bin/vim
 source "../symlinks/symlink-mac.sh"
 
 # other settings
