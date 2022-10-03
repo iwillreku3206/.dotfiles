@@ -125,7 +125,7 @@ _G.packer_plugins = {
     url = "https://github.com/alec-gibson/nvim-tetris"
   },
   ["nvim-tree.lua"] = {
-    config = { "\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14nvim-tree\frequire\0" },
+    config = { "\27LJ\2\nU\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\bgit\1\0\0\1\0\1\vignore\1\nsetup\14nvim-tree\frequire\0" },
     loaded = true,
     path = "/Users/rek/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
@@ -136,7 +136,7 @@ _G.packer_plugins = {
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["tailwind-highlight.nvim"] = {
-    config = { "\27LJ\2\nY\0\2\a\1\2\0\a-\2\0\0009\2\0\2\18\4\0\0\18\5\1\0005\6\1\0B\2\4\1K\0\1\0\0À\1\0\3\tmode\15background\rdebounce\3È\1\18single_column\1\nsetup„\1\1\0\5\0\b\0\0146\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\1\3\0019\1\4\0015\3\6\0003\4\5\0=\4\a\3B\1\2\0012\0\0€K\0\1\0\14on_attach\1\0\0\0\nsetup\16tailwindcss\14lspconfig\23tailwind-highlight\frequire\0" },
+    config = { "\27LJ\2\nY\0\2\a\1\2\0\a-\2\0\0009\2\0\2\18\4\0\0\18\5\1\0005\6\1\0B\2\4\1K\0\1\0\0À\1\0\3\18single_column\1\rdebounce\3È\1\tmode\15background\nsetup„\1\1\0\5\0\b\0\0146\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\1\3\0019\1\4\0015\3\6\0003\4\5\0=\4\a\3B\1\2\0012\0\0€K\0\1\0\14on_attach\1\0\0\0\nsetup\16tailwindcss\14lspconfig\23tailwind-highlight\frequire\0" },
     loaded = true,
     path = "/Users/rek/.local/share/nvim/site/pack/packer/start/tailwind-highlight.nvim",
     url = "https://github.com/princejoogie/tailwind-highlight.nvim"
@@ -167,14 +167,24 @@ time([[Config for nvim-tree.lua]], false)
 time([[Config for lualine.nvim]], true)
 try_loadstring("\27LJ\2\nd\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\1\ntheme\19powerline_dark\nsetup\flualine\frequire\0", "config", "lualine.nvim")
 time([[Config for lualine.nvim]], false)
+try_loadstring("\27LJ\2\nY\0\2\a\1\2\0\a-\2\0\0009\2\0\2\18\4\0\0\18\5\1\0005\6\1\0B\2\4\1K\0\1\0\0À\1\0\3\18single_column\1\rdebounce\3È\1\tmode\15background\nsetup„\1\1\0\5\0\b\0\0146\0\0\0'\2\1\0B\0\2\0026\1\0\0'\3\2\0B\1\2\0029\1\3\0019\1\4\0015\3\6\0003\4\5\0=\4\a\3B\1\2\0012\0\0€K\0\1\0\14on_attach\1\0\0\0\nsetup\16tailwindcss\14lspconfig\23tailwind-highlight\frequire\0", "config", "tailwind-highlight.nvim")
+time([[Config for tailwind-highlight.nvim]], false)
 -- Config for: toggleterm.nvim
 time([[Config for toggleterm.nvim]], true)
 try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\15toggleterm\frequire\0", "config", "toggleterm.nvim")
 time([[Config for toggleterm.nvim]], false)
+-- Config for: lualine.nvim
+time([[Config for lualine.nvim]], true)
+try_loadstring("\27LJ\2\nd\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\foptions\1\0\0\1\0\1\ntheme\19powerline_dark\nsetup\flualine\frequire\0", "config", "lualine.nvim")
+time([[Config for lualine.nvim]], false)
 -- Config for: dracula
 time([[Config for dracula]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme dracula\bcmd\bvim\0", "config", "dracula")
 time([[Config for dracula]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\2\nU\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\4\0005\3\3\0=\3\5\2B\0\2\1K\0\1\0\bgit\1\0\0\1\0\1\vignore\1\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
