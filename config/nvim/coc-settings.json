@@ -5,6 +5,11 @@
       "args": ["server", "-m", "stream"],
       // customize filetypes to your needs
       "filetypes": ["typescript", "typescriptreact", "graphql"]
+    },
+    "godot": {
+      "host": "127.0.0.1",
+      "filetypes": ["gd", "gdscript3"],
+      "port": 6008
     }
   },
   "eslint.codeActionsOnSave.mode": "all",

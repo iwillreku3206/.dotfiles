@@ -60,6 +60,7 @@ require('packer').startup(function(use)
   use 'neoclide/jsonc.vim'
   use 'google/vim-jsonnet'
   use 'kdheepak/lazygit.nvim'
+  use 'habamax/vim-godot'
   use {'nvim-lualine/lualine.nvim',
     config = function ()
       require('lualine').setup{
@@ -96,8 +97,10 @@ require('packer').startup(function(use)
   if PackerBootstrap then
     require('packer').sync()
   end
+  use '/captbaritone/better-indent-support-for-php-with-html'
 end)
 
+vim.cmd('source ~/.dotfiles/config/nvim/scripts/php.vim')
 
 -- bindings are done in vimscript
 vim.cmd([[
@@ -105,12 +108,12 @@ map <silent><C-o> :NvimTreeOpen<CR>
 tmap <C-A-t> <C-\><C-n><C-A-t>
 nmap <C-A-t> :ToggleTerm direction=horizontal<CR><Ins>
 tmap <C-`> <C-\><C-n><C-`>
-nmap <C-`> :ToggleTerm direction=horizontal<CR><Ins>
+nmap <C-`> :ToggleTerm direction=horizontal<CR><Ins
 
 inoremap <silent><expr> <C-space> coc#refresh()
+inoremap <silent><expr> <C-S-space> coc#refresh()
 nmap <silent> <S-F12> <Plug>(coc-definition)
 nnoremap <silent> <C-g> :LazyGit<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
 ]])
