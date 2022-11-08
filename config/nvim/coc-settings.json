@@ -16,5 +16,6 @@
   "eslint.format.enable": true,
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "typescript", "javascript", "javascriptreact", "html"],
+  "clangd.fallbackFlags": ["-xc++"],
   "Lua.diagnostics.globals": ["vim"]
 }

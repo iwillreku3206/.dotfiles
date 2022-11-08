@@ -1,0 +1,22 @@
+vim.g.coc_global_extensions = {
+  'coc-tsserver',
+  'coc-html',
+  'coc-css',
+  'coc-cmake',
+  'coc-docker',
+  'coc-eslint',
+  'coc-json',
+  'coc-java',
+  'coc-svelte',
+  'coc-vimlsp',
+  'coc-vetur',
+  'coc-pyright',
+  'coc-sh',
+  'coc-clangd',
+  'coc-emmet',
+  'coc-phpls',
+  '@yaegassy/coc-tailwindcss3',
+  'coc-prettier',
+  'coc-phpls',
+  'coc-lua'
+}
