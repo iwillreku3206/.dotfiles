@@ -23,3 +23,13 @@ nnoremap <silent> <C-g> :LazyGit<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 ]])
+
+-- CS presave hook (credit to doopNudles on SOF)
+vim.cmd([[
+function! s:CBCodeFormat() abort
+  noautocmd write
+  set nomodified
+endfunction
+autocmd BufWritePre *.cs call OmniSharp#actions#format#Format(function('s:CBCodeFormat'))
+
+]])
