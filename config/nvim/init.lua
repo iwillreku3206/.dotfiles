@@ -6,8 +6,6 @@ dofile(CFG_FOLDER .. "/scripts/options.lua")
 dofile(CFG_FOLDER .. "/scripts/coc-extensions.lua")
 dofile(CFG_FOLDER .. "/scripts/plugins.lua")
 
-vim.cmd('source ~/.dotfiles/config/nvim/scripts/php.vim')
-
 -- bindings are done in vimscript for now
 vim.cmd([[
 map <silent><C-o> :NvimTreeOpen<CR>

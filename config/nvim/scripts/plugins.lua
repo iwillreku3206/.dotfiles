@@ -68,4 +68,4 @@ require('packer').startup(function(use)
   use 'OmniSharp/omnisharp-vim'
 end)
 
-
+vim.cmd('source ~/.dotfiles/config/nvim/scripts/php.vim')
