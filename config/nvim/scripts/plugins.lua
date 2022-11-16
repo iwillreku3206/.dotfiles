@@ -66,6 +66,7 @@ require('packer').startup(function(use)
   use 'captbaritone/better-indent-support-for-php-with-html'
   use 'gpanders/editorconfig.nvim'
   use 'OmniSharp/omnisharp-vim'
+  use 'wuelnerdotexe/vim-astro'
 end)
 
 vim.cmd('source ~/.dotfiles/config/nvim/scripts/php.vim')

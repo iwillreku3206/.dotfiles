@@ -5,4 +5,3 @@ vim.api.nvim_set_option('expandtab', true)
 vim.api.nvim_set_option('termguicolors', true)
 vim.api.nvim_set_option('title', true)
 vim.api.nvim_set_option('clipboard', 'unnamedplus')
-

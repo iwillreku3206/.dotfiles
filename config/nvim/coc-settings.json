@@ -3,13 +3,27 @@
     "graphql": {
       "command": "graphql-lsp",
       "args": ["server", "-m", "stream"],
-      // customize filetypes to your needs
       "filetypes": ["typescript", "typescriptreact", "graphql"]
     },
     "godot": {
       "host": "127.0.0.1",
       "filetypes": ["gd", "gdscript3"],
       "port": 6008
+    },
+    "astro": {
+      //"command": "node",
+      //"args": ["/home/rek/Coding/tests/1/language-tools/packages/language-server/dist/node.js", "--stdio"],
+      "command": "astro-ls",
+      "args": ["--stdio"],
+      "filetypes": ["astro"],
+      "env": {
+        "environment": "node",
+      },
+      "initializationOptions": {
+        "typescript": {
+          "serverPath": "/home/rek/.nvm/versions/node/v17.8.0/bin/tsserver"
+        }
+      }
     }
   },
   "eslint.codeActionsOnSave.mode": "all",
@@ -17,5 +31,6 @@
   "eslint.autoFixOnSave": true,
   "coc.preferences.formatOnSaveFiletypes": ["typescriptreact", "typescript", "javascript", "javascriptreact", "html"],
   "clangd.fallbackFlags": ["-xc++"],
-  "Lua.diagnostics.globals": ["vim"]
+  "Lua.diagnostics.globals": ["vim"],
+  "colors.enable": true
 }

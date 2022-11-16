@@ -1,4 +1,5 @@
 vim.g.coc_global_extensions = {
+  'coc-highlight',
   'coc-tsserver',
   'coc-html',
   'coc-css',
