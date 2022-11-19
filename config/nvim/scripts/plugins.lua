@@ -19,14 +19,6 @@ require('packer').startup(function(use)
     tag = 'v2.*',
     config = function () require('toggleterm').setup() end
   }
-
-  use 'alec-gibson/nvim-tetris'
-
-  use {'neoclide/coc.nvim', branch = 'release'}
-  use 'neoclide/jsonc.vim'
-  use 'google/vim-jsonnet'
-  use 'kdheepak/lazygit.nvim'
-  use 'habamax/vim-godot'
   use {'nvim-lualine/lualine.nvim',
     config = function ()
       require('lualine').setup{
@@ -36,8 +28,86 @@ require('packer').startup(function(use)
       }
     end
   }
+  use 'gpanders/editorconfig.nvim'
+  use {'nvim-treesitter/nvim-treesitter',
+    config = function ()
+      require'nvim-treesitter.configs'.setup {
+        ensure_installed = {
+          "astro",
+          "bash",
+          "c",
+          "c_sharp",
+          "cmake",
+          "cpp",
+          "css",
+          "dart",
+          "diff",
+          "dockerfile",
+          "fish",
+          "gdscript",
+          "git_rebase",
+          "gitattributes",
+          "gitignore",
+          "go",
+          "godot_resource",
+          "graphql",
+          "help",
+          "html",
+          "http",
+          "http",
+          "javascript",
+          "jsdoc",
+          "json",
+          "json5",
+          "jsonc",
+          "jsonnet",
+          "kotlin",
+          "latex",
+          "llvm",
+          "lua",
+          "make",
+          "markdown",
+          "markdown_inline",
+          "php",
+          "python",
+          "regex",
+          "rust",
+          "scss",
+          "sql",
+          "svelte",
+          "tsx",
+          "typescript",
+          "vim",
+          "vue",
+          "yaml"
+        },
+        auto_install = true,
+        highlight = {
+          enable = true,
+          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+          -- Using this option may slow down your editor, and you may see some duplicate highlights.
+          -- Instead of true it can also be a list of languages
+          additional_vim_regex_highlighting = false,
+        },
+      }
+    end,
+    run = function () vim.cmd(':TSUpdate') end
+  }
+
+  use 'alec-gibson/nvim-tetris'
+
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'L3MON4D3/LuaSnip'
+
+  use 'neoclide/jsonc.vim'
+  use 'google/vim-jsonnet'
+  use 'kdheepak/lazygit.nvim'
+  use 'habamax/vim-godot'
   use {'princejoogie/tailwind-highlight.nvim',
     requires = {"neovim/nvim-lspconfig", "nvim-lsp-installer"},
     config = function ()
@@ -56,17 +126,31 @@ require('packer').startup(function(use)
   use {'norcalli/nvim-colorizer.lua',
     config = function () require'colorizer'.setup() end
   }
-  use 'rafcamlet/coc-nvim-lua'
+  use 'captbaritone/better-indent-support-for-php-with-html'
+  use 'OmniSharp/omnisharp-vim'
+  use 'mfussenegger/nvim-jdtls'
+  use 'nvim-lua/plenary.nvim'
+  use {'jose-elias-alvarez/null-ls.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function ()
+      require'null-ls'.setup({
+      on_attach = function(client, bufnr)
+        if client.server_capabilities.documentFormattingProvider then
+          -- format on save
+          vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+        end
+      end,
+      })
+      end
+  }
+  use 'MunifTanjim/prettier.nvim'
+
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PackerBootstrap then
     require('packer').sync()
   end
-  use 'captbaritone/better-indent-support-for-php-with-html'
-  use 'gpanders/editorconfig.nvim'
-  use 'OmniSharp/omnisharp-vim'
   use 'wuelnerdotexe/vim-astro'
 end)
-
-vim.cmd('source ~/.dotfiles/config/nvim/scripts/php.vim')
