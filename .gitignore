@@ -3,5 +3,5 @@
 .luarc.json
 /config/nvim/plugin/
 /config/nvim/plugin/packer_compiled.lua
-
 config/nvim/plugin/packer_compiled.lua
+.luarc.json
