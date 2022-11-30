@@ -74,7 +74,7 @@ alias :q=exit
 
 neofetch
 
-export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/6.*/Sdks );
+export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/7.*/Sdks );
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

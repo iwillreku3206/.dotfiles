@@ -49,4 +49,4 @@ npm install -g graphql-language-service-cli
 npm i -g sql-language-server
 
 
-### NOT PROVIDED: clangd, jdtls (AUR/brew), pyright (pacman/brew), sumenko_lua (brew/pacman), omnisharp (aur-bin/brew-tap) 
+### NOT PROVIDED: clangd, jdtls (AUR/brew), pyright (pacman/brew), sumenko_lua (brew/pacman), omnisharp (aur-bin/brew-tap), rust-analyzer (pacman/brew)
