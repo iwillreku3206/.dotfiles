@@ -40,6 +40,13 @@ require'lspconfig'.html.setup {
   capabilities = capabilities,
 }
 require'lspconfig'.cssls.setup {
+  settings = {
+    css = {
+      lint = {
+        unknownAtRules = 'ignore',
+      },
+    },
+  },
   on_attach = on_attach,
   capabilities = capabilities,
 }
@@ -129,6 +136,8 @@ require'lspconfig'.clangd.setup{
 require'lspconfig'.cmake.setup{
   on_attach = on_attach,
 }
+
+require'lspconfig'.rust_analyzer.setup{}
 
 
 -- java/cs

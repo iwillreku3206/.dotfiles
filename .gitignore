@@ -1,5 +1,6 @@
 .vscode
 .DS_Store
+.luarc.json
 /config/nvim/plugin/
 /config/nvim/plugin/packer_compiled.lua
 config/nvim/plugin/packer_compiled.lua
