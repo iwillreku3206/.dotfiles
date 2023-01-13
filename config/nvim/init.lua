@@ -6,17 +6,8 @@ dofile(CFG_FOLDER .. "/scripts/options.lua")
 dofile(CFG_FOLDER .. "/scripts/plugins.lua")
 dofile(CFG_FOLDER .. "/scripts/filetypes.lua")
 dofile(CFG_FOLDER .. "/scripts/lsp.lua")
+dofile(CFG_FOLDER .. "/scripts/keymaps.lua")
 
--- bindings are done in vimscript for now
-vim.cmd([[
-map <silent><C-o> :NvimTreeOpen<CR>
-tmap <C-A-t> <C-\><C-n><C-A-t>
-nmap <C-A-t> :ToggleTerm direction=horizontal<CR><Ins>
-tmap <C-`> <C-\><C-n><C-`>
-nmap <C-`> :ToggleTerm direction=horizontal<CR><Ins
-
-nnoremap <silent> <C-g> :LazyGit<CR>
-]])
 
 -- CS presave hook (credit to doopNudles on SOF)
 vim.cmd([[

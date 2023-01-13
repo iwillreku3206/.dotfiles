@@ -2,44 +2,44 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'H', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
 
 -- general
-require'lspconfig'.jsonls.setup {
+require 'lspconfig'.jsonls.setup {
   capabilities = capabilities,
   on_attach = on_attach
 }
-require'lspconfig'.dockerls.setup{
+require 'lspconfig'.dockerls.setup {
 }
-
+require 'lspconfig'.marksman.setup {}
 
 -- web
-require'lspconfig'.tsserver.setup{
-  on_attach = on_attach
+require 'lspconfig'.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "typescript.tsx" }
 }
-require'lspconfig'.html.setup {
+require 'lspconfig'.html.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-require'lspconfig'.cssls.setup {
+require 'lspconfig'.cssls.setup {
   settings = {
     css = {
       lint = {
@@ -50,31 +50,31 @@ require'lspconfig'.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
 }
-require'lspconfig'.cssmodules_ls.setup{
+require 'lspconfig'.cssmodules_ls.setup {
   on_attach = on_attach,
 }
 
-require'lspconfig'.eslint.setup{
+require 'lspconfig'.eslint.setup {
   on_attach = on_attach,
 }
 vim.cmd("autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll")
-require'lspconfig'.svelte.setup{
+require 'lspconfig'.svelte.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.vuels.setup{
+require 'lspconfig'.vuels.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.emmet_ls.setup{
+require 'lspconfig'.emmet_ls.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.phan.setup{
+require 'lspconfig'.phan.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.tailwindcss.setup{
+require 'lspconfig'.tailwindcss.setup {
   on_attach = on_attach,
 }
 
-require'prettier'.setup({
+require 'prettier'.setup({
   bin = 'prettier', -- or `'prettierd'` (v0.22+)
   on_attach = on_attach,
   filetypes = {
@@ -95,56 +95,61 @@ require'prettier'.setup({
   },
 })
 
-local h = io.popen('/bin/bash -c "dirname $(dirname $(realpath $(which tsserver)))"', "r")
-require'lspconfig'.astro.setup{
+-- write a function to find the path of tsserver
+local h = io.popen('/bin/bash -c "npm root -g"', "r")
+
+require 'lspconfig'.astro.setup {
   on_attach = on_attach,
   init_options = {
     typescript = {
-      serverPath = h:read() .. '/lib/tsserverlibrary.js'
+      serverPath = h:read() .. '/typescript/lib/tsserverlibrary.js'
     }
   }
 }
 
-h.close()
 h = nil
 
-require'lspconfig'.graphql.setup{
+require 'lspconfig'.graphql.setup {
   on_attach = on_attach,
 }
 
-require'lspconfig'.sqlls.setup{
+require 'lspconfig'.sqlls.setup {
   on_attach = on_attach,
 }
 
 
 -- mobile
-require'lspconfig'.dartls.setup{
+require 'lspconfig'.dartls.setup {
   on_attach = on_attach,
 }
 
 
 -- game dev
-require'lspconfig'.gdscript.setup{
+require 'lspconfig'.gdscript.setup {
   on_attach = on_attach,
 }
 
 
 -- c/cpp/rust
-require'lspconfig'.clangd.setup{
+require 'lspconfig'.clangd.setup {
   on_attach = on_attach,
+  cmd = {
+    "/usr/bin/clangd",
+    '--query-driver=/usr/bin/clang++'
+  }
 }
-require'lspconfig'.cmake.setup{
+require 'lspconfig'.cmake.setup {
   on_attach = on_attach,
 }
 
-require'lspconfig'.rust_analyzer.setup{}
+require 'lspconfig'.rust_analyzer.setup {}
 
 
 -- java/cs
-require'lspconfig'.jdtls.setup{
+require 'lspconfig'.jdtls.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.omnisharp.setup {
+require 'lspconfig'.omnisharp.setup {
   on_attach = on_attach,
   cmd = { "omnisharp" },
 
@@ -185,16 +190,16 @@ require'lspconfig'.omnisharp.setup {
 }
 
 -- scripting
-require'lspconfig'.vimls.setup{
+require 'lspconfig'.vimls.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.pyright.setup{
+require 'lspconfig'.pyright.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.bashls.setup{
+require 'lspconfig'.bashls.setup {
   on_attach = on_attach,
 }
-require'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.sumneko_lua.setup {
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -204,7 +209,7 @@ require'lspconfig'.sumneko_lua.setup {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
@@ -261,5 +266,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' }
   },
 }
