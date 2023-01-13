@@ -99,7 +99,16 @@ require('packer').startup(function(use)
 
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
-  use 'hrsh7th/nvim-cmp'
+  use {
+    'hrsh7th/nvim-cmp',
+    config = function ()
+      require'cmp'.setup {
+        sources = {
+          { name = 'nvim_lsp_signature_help' }
+        }
+      }
+    end
+  }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
