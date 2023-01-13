@@ -1,27 +1,41 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  PackerBootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PackerBootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
   vim.cmd [[packadd packer.nvim]]
 end
 
 require('packer').startup(function(use)
-  use {'dracula/vim',
+  -- dependencies
+  use 'nvim-lua/plenary.nvim'
+
+
+  use { 'dracula/vim',
     as = 'dracula',
-    config = function () vim.cmd('colorscheme dracula') end
+    config = function() vim.cmd('colorscheme dracula') end
   }
   use 'kyazdani42/nvim-web-devicons'
-  use {'kyazdani42/nvim-tree.lua',
-    config = function () require('nvim-tree').setup{ git = { ignore = false } } end,
+  use { 'kyazdani42/nvim-tree.lua',
+    config = function()
+      require('nvim-tree').setup {
+        git = { ignore = false },
+        remove_keymaps = { "f" }
+      }
+    end,
     requires = "nvim-web-devicons"
   }
-  use {'akinsho/toggleterm.nvim',
-    tag = 'v2.*',
-    config = function () require('toggleterm').setup() end
+
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { { 'nvim-lua/plenary.nvim' } }
   }
-  use {'nvim-lualine/lualine.nvim',
-    config = function ()
-      require('lualine').setup{
+  use { 'akinsho/toggleterm.nvim',
+    tag = 'v2.*',
+    config = function() require('toggleterm').setup() end
+  }
+  use { 'nvim-lualine/lualine.nvim',
+    config = function()
+      require('lualine').setup {
         options = {
           theme = 'powerline_dark'
         }
@@ -29,9 +43,9 @@ require('packer').startup(function(use)
     end
   }
   use 'gpanders/editorconfig.nvim'
-  use {'nvim-treesitter/nvim-treesitter',
-    config = function ()
-      require'nvim-treesitter.configs'.setup {
+  use { 'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
         ensure_installed = {
           "astro",
           "bash",
@@ -92,10 +106,11 @@ require('packer').startup(function(use)
         },
       }
     end,
-    run = function () vim.cmd(':TSUpdate') end
+    run = function() vim.cmd(':TSUpdate') end
   }
 
   use 'alec-gibson/nvim-tetris'
+  use 'seandewar/nvimesweeper'
 
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
@@ -113,13 +128,28 @@ require('packer').startup(function(use)
   use 'saadparwaiz1/cmp_luasnip'
   use 'L3MON4D3/LuaSnip'
 
+  use {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  }
+
+  use {
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  }
+
   use 'neoclide/jsonc.vim'
   use 'google/vim-jsonnet'
   use 'kdheepak/lazygit.nvim'
   use 'habamax/vim-godot'
-  use {'princejoogie/tailwind-highlight.nvim',
-    requires = {"neovim/nvim-lspconfig", "nvim-lsp-installer"},
-    config = function ()
+  use { 'princejoogie/tailwind-highlight.nvim',
+    requires = { "neovim/nvim-lspconfig", "nvim-lsp-installer" },
+    config = function()
       local tw_highlight = require('tailwind-highlight')
       require('lspconfig').tailwindcss.setup({
         on_attach = function(client, bufnr)
@@ -132,34 +162,69 @@ require('packer').startup(function(use)
       })
     end
   }
-  use {'norcalli/nvim-colorizer.lua',
-    config = function () require'colorizer'.setup() end
+  use { 'norcalli/nvim-colorizer.lua',
+    config = function() require 'colorizer'.setup() end
   }
   use 'captbaritone/better-indent-support-for-php-with-html'
   use 'OmniSharp/omnisharp-vim'
   use 'mfussenegger/nvim-jdtls'
-  use 'nvim-lua/plenary.nvim'
-  use {'jose-elias-alvarez/null-ls.nvim',
-    requires = {'nvim-lua/plenary.nvim'},
-    config = function ()
-      require'null-ls'.setup({
-      on_attach = function(client, bufnr)
-        if client.server_capabilities.documentFormattingProvider then
-          -- format on save
-          vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
-        end
-      end,
+  use { 'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require 'null-ls'.setup({
+        on_attach = function(client, bufnr)
+          if client.server_capabilities.documentFormattingProvider then
+            -- format on save
+            vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+          end
+        end,
       })
-      end
+    end
   }
   use 'MunifTanjim/prettier.nvim'
+  use { 'MunifTanjim/eslint.nvim',
+    requires = { 'jose-elias-alvarez/null-ls.nvim', 'MunifTanjim/eslint.nvim' },
+    config = function()
+      require('eslint').setup({
+        bin = 'eslint', -- or `eslint_d`
+        code_actions = {
+          enable = true,
+          apply_on_save = {
+            enable = true,
+            types = { "directive", "problem", "suggestion", "layout" },
+          },
+          disable_rule_comment = {
+            enable = true,
+            location = "separate_line", -- or `same_line`
+          },
+        },
+        diagnostics = {
+          enable = true,
+          report_unused_disable_directives = false,
+          run_on = "type", -- or `save`
+        },
+      })
+    end
+  }
 
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
-
+  use "github/copilot.vim"
+  use 'andweeb/presence.nvim'
+  use 'wuelnerdotexe/vim-astro'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PackerBootstrap then
     require('packer').sync()
   end
-  use 'wuelnerdotexe/vim-astro'
 end)
