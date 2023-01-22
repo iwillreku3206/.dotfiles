@@ -18,3 +18,6 @@ vim.keymap.set('n', '<M-6>', ':tabn 6<CR>', { silent = true, noremap = true })
 vim.keymap.set('n', '<M-7>', ':tabn 7<CR>', { silent = true, noremap = true })
 vim.keymap.set('n', '<M-8>', ':tabn 8<CR>', { silent = true, noremap = true })
 vim.keymap.set('n', '<M-9>', ':tabn 9<CR>', { silent = true, noremap = true })
+
+vim.keymap.set('n', 'ms', ':MarkdownPreview<CR>', { silent = true, noremap = true })
+vim.keymap.set('n', 'me', ':MarkdownPreviewStop<CR>', { silent = true, noremap = true })
