@@ -1,0 +1,63 @@
+body {
+	font-family: sans-serif;	
+}
+
+.title {
+  text-align: center;
+}
+
+h1:not(.title) {
+  font-size: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+  padding-bottom: 1rem;
+  border-bottom: 0.2rem solid #59f !important;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+h4 {
+  font-size: 0.9rem;
+}
+
+h5 {
+  font-size: 0.8rem;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+blockquote {
+  border-left: 0.5rem solid #666;
+  padding: 1rem;
+  font-family: sans-serif;
+  font-style: italic;
+}
+
+
+.header-section-number::after {
+  content: '.';
+}
+
+.math {
+  margin: 1rem;
+}
+
+nav ol {
+  list-style-type: none;
+}
+nav li::before {
+  content: attr(bullet);
+}
