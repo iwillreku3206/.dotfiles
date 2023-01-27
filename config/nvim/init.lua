@@ -5,6 +5,7 @@ CFG_FOLDER = vim.g.CFG_FOLDER
 dofile(CFG_FOLDER .. "/scripts/options.lua")
 dofile(CFG_FOLDER .. "/scripts/plugins.lua")
 dofile(CFG_FOLDER .. "/scripts/filetypes.lua")
+vim.cmd('source ' .. CFG_FOLDER .. '/scripts/filetypes.vim')
 dofile(CFG_FOLDER .. "/scripts/lsp.lua")
 dofile(CFG_FOLDER .. "/scripts/keymaps.lua")
 

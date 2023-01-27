@@ -71,10 +71,11 @@ load-nvmrc
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 alias :q=exit
+source ~/.dotfiles/zsh-scripts/*.sh
 
 neofetch
 
-export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/7.*/Sdks );
+#export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/7.*/Sdks );
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

@@ -19,7 +19,6 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
-
 -- general
 require 'lspconfig'.jsonls.setup {
   capabilities = capabilities,
@@ -27,7 +26,7 @@ require 'lspconfig'.jsonls.setup {
 }
 require 'lspconfig'.dockerls.setup {
 }
-require 'lspconfig'.marksman.setup {}
+
 
 -- web
 require 'lspconfig'.tsserver.setup {
