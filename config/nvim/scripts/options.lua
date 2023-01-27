@@ -13,9 +13,14 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 })
 vim.cmd('set updatetime=50')
 vim.g.mkdp_auto_close = 0
-vim.g.mkdp_highlight_css = '~/.dotfiles/pandoc/pandoc.css'
+vim.g.mkdp_highlight_css = '/Users/rek/.dotfiles/pandoc/pandoc.css'
 vim.g.mkdp_filetypes = { 'markdown', 'pandoc' }
+vim.g.mkdp_browserfunc = 'OpenInElectron'
+
+vim.g.instant_markdown_mathjax = 1
+vim.g.instant_markdown_browser = 'electron'
 vim.cmd('let g:pandoc#modules#disabled = ["spell", "folding"]')
+
 vim.cmd([[
 filetype on
 filetype plugin on

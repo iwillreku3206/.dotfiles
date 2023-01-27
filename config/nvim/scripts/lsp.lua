@@ -142,6 +142,10 @@ require 'lspconfig'.cmake.setup {
 }
 
 require 'lspconfig'.rust_analyzer.setup {}
+require 'lspconfig'.arduino_language_server.setup {
+  cmd = { 'arduino-language-server', '-cli', '/usr/local/bin/arduino-cli', '--cli-config',
+    '/Users/rek/Library/Arduino15/arduino-cli.yaml', '-clangd', '/usr/local/bin/clangd' }
+}
 
 
 -- java/cs
@@ -212,7 +216,7 @@ require 'lspconfig'.sumneko_lua.setup {
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = {vim.api.nvim_get_runtime_file("", true), "/home/rek/CC-Tweaked-EmmyLua"},
+        library = { vim.api.nvim_get_runtime_file("", true), "/home/rek/CC-Tweaked-EmmyLua" },
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {

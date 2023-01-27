@@ -48,5 +48,8 @@ npm install -g graphql-language-service-cli
 # sql
 npm i -g sql-language-server
 
+#arduino
+go install github.com/arduino/arduino-language-server@latest
+
 
 ### NOT PROVIDED: clangd, jdtls (AUR/brew), pyright (pacman/brew), sumenko_lua (brew/pacman), omnisharp (aur-bin/brew-tap), rust-analyzer (pacman/brew)
