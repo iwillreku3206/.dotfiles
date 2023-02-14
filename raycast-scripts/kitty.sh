@@ -11,4 +11,4 @@
 # Documentation:
 # @raycast.description Create new Kitty OS window
 
-kitty
+kitty ~
