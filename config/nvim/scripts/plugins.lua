@@ -8,7 +8,7 @@ end
 require('packer').startup(function(use)
   -- dependencies
   use 'nvim-lua/plenary.nvim'
-
+  use { 'm00qek/baleia.nvim', tag = 'v1.2.0' }
 
   use { 'dracula/vim',
     as = 'dracula',
@@ -108,16 +108,44 @@ require('packer').startup(function(use)
     end,
     run = function() vim.cmd(':TSUpdate') end
   }
+  use { 'edluffy/hologram.nvim',
+    config = function()
+      require('hologram').setup { auto_display = true }
+    end
+  }
+  use {
+    'samodostal/image.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'm00qek/baleia.nvim'
+    },
+    config = function()
+      require('image').setup {
+        render = {
+          min_padding = 5,
+          show_label = true,
+          use_dither = false,
+          foreground_color = true,
+          background_color = true
+        },
+        events = {
+          update_on_nvim_resize = true,
+        },
+      }
+    end
+  }
+
 
   use 'alec-gibson/nvim-tetris'
   use 'seandewar/nvimesweeper'
+
 
   use 'neovim/nvim-lspconfig'
   use 'williamboman/nvim-lsp-installer'
   use {
     'hrsh7th/nvim-cmp',
-    config = function ()
-      require'cmp'.setup {
+    config = function()
+      require 'cmp'.setup {
         sources = {
           { name = 'nvim_lsp_signature_help' }
         }
