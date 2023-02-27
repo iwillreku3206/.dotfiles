@@ -142,7 +142,7 @@ require 'lspconfig'.arduino_language_server.setup {
 }
 
 
--- java/cs
+-- java/cs/go
 require 'lspconfig'.jdtls.setup {
   on_attach = on_attach,
 }
@@ -185,6 +185,8 @@ require 'lspconfig'.omnisharp.setup {
   -- true
   analyze_open_documents_only = false,
 }
+require'lspconfig'.gopls.setup{}
+
 
 -- scripting
 require 'lspconfig'.vimls.setup {
