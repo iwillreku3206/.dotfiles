@@ -1,5 +1,5 @@
-vim.keymap.set('n', '<C-g>', ':LazyGit<CR>', { silent = true, noremap = true })
-vim.keymap.set('n', '<C-o>', ':NvimTreeOpen<CR>', { silent = true, noremap = true })
+vim.keymap.set('n', 'gg', ':LazyGit<CR>', { silent = true, noremap = true })
+vim.keymap.set('n', 'tr', ':NvimTreeOpen<CR>', { silent = true, noremap = true })
 
 local telescope_builtin = require('telescope.builtin')
 vim.keymap.set('n', 'ff', telescope_builtin.find_files, {})
