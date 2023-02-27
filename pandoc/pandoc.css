@@ -61,3 +61,10 @@ nav ol {
 nav li::before {
   content: attr(bullet);
 }
+
+img {
+  max-height: 40vw; margin: 2em;
+  max-width: 75%; 
+  text-align: left;
+  display: block;
+}
