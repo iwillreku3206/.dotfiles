@@ -76,8 +76,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 alias :q=exit
 source ~/.dotfiles/zsh-scripts/*.sh
-
-neofetch
+neofetch --ascii_distro Windows7
 
 #export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/7.*/Sdks );
 
