@@ -141,6 +141,7 @@ require('packer').startup(function(use)
 
 
   use 'neovim/nvim-lspconfig'
+  use 'p00f/clangd_extensions.nvim'
   use 'williamboman/nvim-lsp-installer'
   use {
     'hrsh7th/nvim-cmp',
@@ -173,16 +174,15 @@ require('packer').startup(function(use)
 
   use 'vim-pandoc/vim-pandoc'
   use 'vim-pandoc/vim-pandoc-syntax'
-  -- install without yarn or npm
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = function() vim.fn["mkdp#util#install"]() end,
-  })
 
   use 'instant-markdown/vim-instant-markdown'
 
-  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  })
 
   use 'neoclide/jsonc.vim'
   use 'google/vim-jsonnet'

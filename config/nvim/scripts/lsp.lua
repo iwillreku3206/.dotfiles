@@ -130,13 +130,7 @@ require 'lspconfig'.gdscript.setup {
 
 
 -- c/cpp/rust
-require 'lspconfig'.clangd.setup {
-  on_attach = on_attach,
-  cmd = {
-    "/usr/bin/clangd",
-    '--query-driver=/usr/bin/clang++'
-  }
-}
+require("clangd_extensions").setup()
 require 'lspconfig'.cmake.setup {
   on_attach = on_attach,
 }
@@ -202,7 +196,7 @@ require 'lspconfig'.pyright.setup {
 require 'lspconfig'.bashls.setup {
   on_attach = on_attach,
 }
-require 'lspconfig'.sumneko_lua.setup {
+require 'lspconfig'.lua_ls.setup {
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -240,9 +234,10 @@ cmp.setup {
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs( -4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -259,8 +254,8 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif luasnip.jumpable( -1) then
+        luasnip.jump( -1)
       else
         fallback()
       end
@@ -269,6 +264,7 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    { name = 'buffer' }
+    { name = 'buffer' },
+    { name = 'nvim_lsp:tsserver' }
   },
 }

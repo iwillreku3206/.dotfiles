@@ -1,4 +1,5 @@
 vim.g.CFG_FOLDER = vim.env["HOME"] .. "/.dotfiles/config/nvim"
+vim.lsp.set_log_level("debug")
 CFG_FOLDER = vim.g.CFG_FOLDER
 
 vim.cmd('source ' .. CFG_FOLDER .. '/scripts/electron.vim')
