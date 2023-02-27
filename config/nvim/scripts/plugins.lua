@@ -142,6 +142,7 @@ require('packer').startup(function(use)
 
   use 'neovim/nvim-lspconfig'
   use 'p00f/clangd_extensions.nvim'
+  use {'fatih/vim-go', run = ":GoInstallBinaries" }
   use 'williamboman/nvim-lsp-installer'
   use {
     'hrsh7th/nvim-cmp',
