@@ -201,6 +201,11 @@ require('packer').startup(function(use)
   use { 'norcalli/nvim-colorizer.lua',
     config = function() require 'colorizer'.setup() end
   }
+  use ({"ziontee113/color-picker.nvim",
+    config = function()
+        require("color-picker")
+    end,
+})
   use 'captbaritone/better-indent-support-for-php-with-html'
   use 'OmniSharp/omnisharp-vim'
   use 'mfussenegger/nvim-jdtls'
