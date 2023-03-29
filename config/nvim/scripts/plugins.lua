@@ -201,11 +201,12 @@ require('packer').startup(function(use)
   use { 'norcalli/nvim-colorizer.lua',
     config = function() require 'colorizer'.setup() end
   }
-  use ({"ziontee113/color-picker.nvim",
+  use({
+    "ziontee113/color-picker.nvim",
     config = function()
-        require("color-picker")
+      require("color-picker")
     end,
-})
+  })
   use 'captbaritone/better-indent-support-for-php-with-html'
   use 'OmniSharp/omnisharp-vim'
   use 'mfussenegger/nvim-jdtls'
@@ -252,17 +253,15 @@ require('packer').startup(function(use)
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-      require("trouble").setup {
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      }
+      require("trouble").setup {}
     end
   }
 
   use "github/copilot.vim"
   use 'andweeb/presence.nvim'
   use 'wuelnerdotexe/vim-astro'
+
+  use 'stevearc/profile.nvim'
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PackerBootstrap then

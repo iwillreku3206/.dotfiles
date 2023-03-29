@@ -188,6 +188,16 @@ lsp.omnisharp.setup(coq.lsp_ensure_capabilities {
   sdk_include_prereleases = false,
   analyze_open_documents_only = false,
 })
+-- CS presave hook (credit to doopNudles on SOF)
+vim.cmd([[
+function! s:CBCodeFormat() abort
+  noautocmd write
+  set nomodified
+endfunction
+autocmd BufWritePre *.cs call OmniSharp#actions#format#Format(function('s:CBCodeFormat'))
+
+]])
+
 require 'lspconfig'.gopls.setup(coq.lsp_ensure_capabilities {
   capabilities = capabilities,
   on_attach = on_attach
@@ -230,3 +240,5 @@ require("coq_3p") {
   { src = "nvimlua", short_name = "nLUA", conf_only = true },
   { src = "bc",      short_name = "MATH", precision = 6 },
 }
+
+vim.cmd("COQnow -s")
