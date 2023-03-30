@@ -1,39 +1,54 @@
+vim.g.CFG_FOLDER = vim.env["HOME"] .. "/.dotfiles/config/nvim"
+CFG_FOLDER = vim.g.CFG_FOLDER
+
 local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  PackerBootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-  vim.cmd [[packadd packer.nvim]]
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
 
-require('packer').startup(function(use)
+require("lazy").setup({
   -- dependencies
-  use 'nvim-lua/plenary.nvim'
-  use { 'm00qek/baleia.nvim', tag = 'v1.2.0' }
+  'nvim-lua/plenary.nvim',
+  { 'm00qek/baleia.nvim', tag = 'v1.2.0' },
+  'kyazdani42/nvim-web-devicons',
 
-  use { 'dracula/vim',
-    as = 'dracula',
+  -- color scheme
+  {
+    'dracula/vim',
+    name = 'dracula',
     config = function() vim.cmd('colorscheme dracula') end
-  }
-  use 'kyazdani42/nvim-web-devicons'
-  use { 'kyazdani42/nvim-tree.lua',
+  },
+
+  -- files
+  {
+    'kyazdani42/nvim-tree.lua',
     config = function()
       require('nvim-tree').setup {
         git = { ignore = false },
         remove_keymaps = { "f" }
       }
     end,
-    requires = "nvim-web-devicons"
-  }
+    requires = { "nvim-web-devicons" }
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.0',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
-  use { 'akinsho/toggleterm.nvim',
-    tag = 'v2.*',
-    config = function() require('toggleterm').setup() end
-  }
-  use { 'nvim-lualine/lualine.nvim',
+  -- ui
+  {
+    'nvim-lualine/lualine.nvim',
     config = function()
       require('lualine').setup {
         options = {
@@ -41,149 +56,41 @@ require('packer').startup(function(use)
         }
       }
     end
-  }
-  use 'gpanders/editorconfig.nvim'
-  use { 'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require 'nvim-treesitter.configs'.setup {
-        ensure_installed = {
-          "astro",
-          "bash",
-          "c",
-          "c_sharp",
-          "cmake",
-          "cpp",
-          "css",
-          "dart",
-          "diff",
-          "dockerfile",
-          "fish",
-          "gdscript",
-          "git_rebase",
-          "gitattributes",
-          "gitignore",
-          "go",
-          "godot_resource",
-          "graphql",
-          "help",
-          "html",
-          "http",
-          "http",
-          "javascript",
-          "jsdoc",
-          "json",
-          "json5",
-          "jsonc",
-          "jsonnet",
-          "kotlin",
-          "latex",
-          "llvm",
-          "lua",
-          "make",
-          "markdown",
-          "markdown_inline",
-          "php",
-          "python",
-          "regex",
-          "rust",
-          "scss",
-          "sql",
-          "svelte",
-          "tsx",
-          "typescript",
-          "vim",
-          "vue",
-          "yaml"
-        },
-        auto_install = true,
-        highlight = {
-          enable = true,
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
-        },
-      }
-    end,
-    run = function() vim.cmd(':TSUpdate') end
-  }
-  use { 'edluffy/hologram.nvim',
+  },
+  {
+    'edluffy/hologram.nvim',
     config = function()
       require('hologram').setup { auto_display = true }
     end
-  }
-  use {
-    'samodostal/image.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-      'm00qek/baleia.nvim'
-    },
+  },
+
+  -- treesitter
+  {
+    'nvim-treesitter/nvim-treesitter',
     config = function()
-      require('image').setup {
-        render = {
-          min_padding = 5,
-          show_label = true,
-          use_dither = false,
-          foreground_color = true,
-          background_color = true
-        },
-        events = {
-          update_on_nvim_resize = true,
-        },
-      }
-    end
-  }
+      dofile(CFG_FOLDER .. "/scripts/plugins/treesitter.lua")
+    end,
+    run = function() vim.cmd(':TSUpdate') end
+  },
 
 
-  use 'alec-gibson/nvim-tetris'
-  use 'seandewar/nvimesweeper'
+  -- lsp
 
+  'neovim/nvim-lspconfig',
+  'p00f/clangd_extensions.nvim',
+  { 'fatih/vim-go',       run = ":GoInstallBinaries" },
+  'williamboman/nvim-lsp-installer',
+  { 'ms-jpq/coq_nvim',       branch = "coq" },
 
-  use 'neovim/nvim-lspconfig'
-  use 'p00f/clangd_extensions.nvim'
-  use { 'fatih/vim-go', run = ":GoInstallBinaries" }
-  use 'williamboman/nvim-lsp-installer'
-  use {
-    'ms-jpq/coq_nvim', branch = "coq"
-  }
+  { "ms-jpq/coq.artifacts",  branch = 'artifacts' },
+  { "ms-jpq/coq.thirdparty", branch = '3p' },
 
-  use { "ms-jpq/coq.artifacts", branch = 'artifacts' }
-  use { "ms-jpq/coq.thirdparty", branch = '3p' }
-  use 'L3MON4D3/LuaSnip'
-
-  use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
-  }
-
-  use {
-    "kylechui/nvim-surround",
-    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
-  }
-
-  use 'vim-pandoc/vim-pandoc'
-  use 'vim-pandoc/vim-pandoc-syntax'
-
-  use 'instant-markdown/vim-instant-markdown'
-
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" },
-  })
-
-  use 'neoclide/jsonc.vim'
-  use 'google/vim-jsonnet'
-  use 'kdheepak/lazygit.nvim'
-  use 'habamax/vim-godot'
-  use { 'princejoogie/tailwind-highlight.nvim',
+  -- language specific
+  'neoclide/jsonc.vim',
+  'google/vim-jsonnet',
+  'habamax/vim-godot',
+  {
+    'princejoogie/tailwind-highlight.nvim',
     requires = { "neovim/nvim-lspconfig", "nvim-lsp-installer" },
     config = function()
       local tw_highlight = require('tailwind-highlight')
@@ -197,34 +104,21 @@ require('packer').startup(function(use)
         end
       })
     end
-  }
-  use { 'norcalli/nvim-colorizer.lua',
-    config = function() require 'colorizer'.setup() end
-  }
-  use({
-    "ziontee113/color-picker.nvim",
-    config = function()
-      require("color-picker")
-    end,
-  })
-  use 'captbaritone/better-indent-support-for-php-with-html'
-  use 'OmniSharp/omnisharp-vim'
-  use 'mfussenegger/nvim-jdtls'
-  use { 'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require 'null-ls'.setup({
-        on_attach = function(client, bufnr)
-          if client.server_capabilities.documentFormattingProvider then
-            -- format on save
-            vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
-          end
-        end,
-      })
-    end
-  }
-  use 'MunifTanjim/prettier.nvim'
-  use { 'MunifTanjim/eslint.nvim',
+  },
+  'captbaritone/better-indent-support-for-php-with-html',
+  'OmniSharp/omnisharp-vim',
+  'mfussenegger/nvim-jdtls',
+  'vim-pandoc/vim-pandoc',
+  'vim-pandoc/vim-pandoc-syntax',
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  },
+  'MunifTanjim/prettier.nvim',
+  {
+    'MunifTanjim/eslint.nvim',
     requires = { 'jose-elias-alvarez/null-ls.nvim', 'MunifTanjim/eslint.nvim' },
     config = function()
       require('eslint').setup({
@@ -247,24 +141,62 @@ require('packer').startup(function(use)
         },
       })
     end
-  }
+  },
+  'gpanders/editorconfig.nvim',
+  'wuelnerdotexe/vim-astro',
 
-  use {
+  -- tools/games
+
+
+  'alec-gibson/nvim-tetris',
+  'seandewar/nvimesweeper',
+  'kdheepak/lazygit.nvim',
+  {
+    "ziontee113/color-picker.nvim",
+    config = function()
+      require("color-picker")
+    end,
+  },
+  {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {}
     end
-  }
+  },
+  'stevearc/profile.nvim',
 
-  use "github/copilot.vim"
-  use 'andweeb/presence.nvim'
-  use 'wuelnerdotexe/vim-astro'
-
-  use 'stevearc/profile.nvim'
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if PackerBootstrap then
-    require('packer').sync()
-  end
-end)
+  -- utils
+  {
+    "windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+  },
+  {
+    "kylechui/nvim-surround",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function() require 'colorizer'.setup() end
+  },
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require 'null-ls'.setup({
+        on_attach = function(client, bufnr)
+          if client.server_capabilities.documentFormattingProvider then
+            -- format on save
+            vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
+          end
+        end,
+      })
+    end
+  },
+  "github/copilot.vim",
+  'andweeb/presence.nvim'
+})
