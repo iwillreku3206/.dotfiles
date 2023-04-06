@@ -76,7 +76,7 @@ require("lazy").setup({
   {
     'nvim-treesitter/nvim-treesitter',
     config = function()
-      dofile(CFG_FOLDER .. "/scripts/plugins/treesitter.lua")
+      require('iwillreku3206.plugins.treesitter')
     end,
     run = function() vim.cmd(':TSUpdate') end
   },
