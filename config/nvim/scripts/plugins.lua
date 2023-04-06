@@ -21,6 +21,7 @@ require("lazy").setup({
   'nvim-lua/plenary.nvim',
   { 'm00qek/baleia.nvim', tag = 'v1.2.0' },
   'kyazdani42/nvim-web-devicons',
+  'rcarriga/nvim-notify',
 
   -- color scheme
   {
@@ -38,7 +39,7 @@ require("lazy").setup({
         remove_keymaps = { "f" }
       }
     end,
-    requires = { "nvim-web-devicons" }
+    dependencies = { "nvim-web-devicons" }
   },
   {
     'nvim-telescope/telescope.nvim',
@@ -55,6 +56,13 @@ require("lazy").setup({
           theme = 'powerline_dark'
         }
       }
+    end
+  },
+  {
+    "startup-nvim/startup.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+    config = function()
+      require "startup".setup()
     end
   },
   {
@@ -94,7 +102,7 @@ require("lazy").setup({
   'habamax/vim-godot',
   {
     'princejoogie/tailwind-highlight.nvim',
-    requires = { "neovim/nvim-lspconfig", "nvim-lsp-installer" },
+    dependencies = { "neovim/nvim-lspconfig", "nvim-lsp-installer" },
     config = function()
       local tw_highlight = require('tailwind-highlight')
       require('lspconfig').tailwindcss.setup({
@@ -122,7 +130,7 @@ require("lazy").setup({
   'MunifTanjim/prettier.nvim',
   {
     'MunifTanjim/eslint.nvim',
-    requires = { 'jose-elias-alvarez/null-ls.nvim', 'MunifTanjim/eslint.nvim' },
+    dependencies = { 'jose-elias-alvarez/null-ls.nvim', 'MunifTanjim/eslint.nvim' },
     config = function()
       require('eslint').setup({
         bin = 'eslint', -- or `eslint_d`
@@ -148,11 +156,13 @@ require("lazy").setup({
   'gpanders/editorconfig.nvim',
   'wuelnerdotexe/vim-astro',
 
-  -- tools/games
-
+  -- games
 
   'alec-gibson/nvim-tetris',
   'seandewar/nvimesweeper',
+  { 'jim-fx/sudoku.nvim', config = function() require('sudoku').setup{} end },
+
+  -- tools
   'kdheepak/lazygit.nvim',
   {
     "ziontee113/color-picker.nvim",
@@ -162,7 +172,7 @@ require("lazy").setup({
   },
   {
     "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "kyazdani42/nvim-web-devicons",
     config = function()
       require("trouble").setup {}
     end
@@ -188,7 +198,7 @@ require("lazy").setup({
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require 'null-ls'.setup({
         on_attach = function(client, bufnr)
@@ -201,5 +211,6 @@ require("lazy").setup({
     end
   },
   "github/copilot.vim",
-  'andweeb/presence.nvim'
+  'andweeb/presence.nvim',
+  'dstein64/vim-startuptime'
 })

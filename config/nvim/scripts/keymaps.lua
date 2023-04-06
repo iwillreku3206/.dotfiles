@@ -7,6 +7,7 @@ vim.keymap.set('n', 'fg', telescope_builtin.live_grep, {})
 vim.keymap.set('n', 'fm', telescope_builtin.man_pages, {})
 vim.keymap.set('n', 'fq', telescope_builtin.quickfix, {})
 vim.keymap.set('n', 'fp', telescope_builtin.diagnostics, {})
+vim.keymap.set('n', '<C-p>', telescope_builtin.commands, {})
 
 vim.keymap.set('n', '<M-n>', ':tabe<CR>', { silent = true, noremap = true })
 vim.keymap.set('n', '<M-1>', ':tabn 1<CR>', { silent = true, noremap = true })
