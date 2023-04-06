@@ -80,10 +80,13 @@ require("lazy").setup({
   'p00f/clangd_extensions.nvim',
   { 'fatih/vim-go',       run = ":GoInstallBinaries" },
   'williamboman/nvim-lsp-installer',
-  { 'ms-jpq/coq_nvim',       branch = "coq" },
-
-  { "ms-jpq/coq.artifacts",  branch = 'artifacts' },
-  { "ms-jpq/coq.thirdparty", branch = '3p' },
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'L3MON4D3/LuaSnip',
+  'saadparwaiz1/cmp_luasnip',
 
   -- language specific
   'neoclide/jsonc.vim',

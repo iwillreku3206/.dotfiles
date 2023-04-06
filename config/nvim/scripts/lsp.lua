@@ -1,7 +1,5 @@
 local lsp = require 'lspconfig'
-local coq = require 'coq'
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local on_attach = function(_, bufnr)
@@ -22,28 +20,28 @@ local on_attach = function(_, bufnr)
 end
 
 -- general
-lsp.jsonls.setup(coq.lsp_ensure_capabilities {
+lsp.jsonls.setup({
   capabilities = capabilities,
   on_attach = on_attach
 })
 
-lsp.dockerls.setup(coq.lsp_ensure_capabilities {
+lsp.dockerls.setup({
   capabilities = capabilities,
   on_attach = on_attach
 })
 
 
 -- web
-lsp.tsserver.setup(coq.lsp_ensure_capabilities {
+lsp.tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact", "typescript.tsx" }
 })
-lsp.html.setup(coq.lsp_ensure_capabilities {
+lsp.html.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.cssls.setup(coq.lsp_ensure_capabilities {
+lsp.cssls.setup({
   settings = {
     css = {
       lint = {
@@ -54,37 +52,37 @@ lsp.cssls.setup(coq.lsp_ensure_capabilities {
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.cssmodules_ls.setup(coq.lsp_ensure_capabilities {
+lsp.cssmodules_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
-lsp.eslint.setup(coq.lsp_ensure_capabilities {
+lsp.eslint.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.svelte.setup(coq.lsp_ensure_capabilities {
+lsp.svelte.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.vuels.setup(coq.lsp_ensure_capabilities {
+lsp.vuels.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.emmet_ls.setup(coq.lsp_ensure_capabilities {
+lsp.emmet_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.phan.setup(coq.lsp_ensure_capabilities {
+lsp.phan.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.tailwindcss.setup(coq.lsp_ensure_capabilities {
+lsp.tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
-require 'prettier'.setup(coq.lsp_ensure_capabilities {
+require 'prettier'.setup({
   bin = 'prettier',
   on_attach = on_attach,
   capabilities = capabilities,
@@ -109,7 +107,7 @@ require 'prettier'.setup(coq.lsp_ensure_capabilities {
 -- write a function to find the path of tsserver
 local h = io.popen('/bin/bash -c "npm root -g"', "r")
 
-lsp.astro.setup(coq.lsp_ensure_capabilities {
+lsp.astro.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   init_options = {
@@ -121,46 +119,46 @@ lsp.astro.setup(coq.lsp_ensure_capabilities {
 
 h = nil
 
-lsp.graphql.setup(coq.lsp_ensure_capabilities {
+lsp.graphql.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
-lsp.sqlls.setup(coq.lsp_ensure_capabilities {
+lsp.sqlls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
 
 -- mobile
-lsp.dartls.setup(coq.lsp_ensure_capabilities {
+lsp.dartls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
 
 -- game dev
-lsp.gdscript.setup(coq.lsp_ensure_capabilities {
+lsp.gdscript.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
 
 -- c/cpp/rust
-require("clangd_extensions").setup(coq.lsp_ensure_capabilities())
-lsp.cmake.setup(coq.lsp_ensure_capabilities {
+require("clangd_extensions").setup()
+lsp.cmake.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
-lsp.rust_analyzer.setup(coq.lsp_ensure_capabilities({
+lsp.rust_analyzer.setup(({
   capabilities = capabilities,
   on_attach = on_attach
 }))
 
 local h = io.popen('/bin/bash -c "which clangd"', "r")
 
-lsp.arduino_language_server.setup(coq.lsp_ensure_capabilities {
+lsp.arduino_language_server.setup({
   capabilities = capabilities,
   on_attach = on_attach,
   cmd = { 'arduino-language-server', '-cli', '/usr/local/bin/arduino-cli', '--cli-config',
@@ -171,15 +169,14 @@ lsp.arduino_language_server.setup(coq.lsp_ensure_capabilities {
 h = nil
 
 -- java/cs/go
-lsp.jdtls.setup(coq.lsp_ensure_capabilities {
+lsp.jdtls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-lsp.omnisharp.setup(coq.lsp_ensure_capabilities {
+lsp.omnisharp.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = { "omnisharp" },
-
   enable_editorconfig_support = true,
   enable_ms_build_load_projects_on_demand = false,
   enable_roslyn_analyzers = true,
@@ -198,23 +195,23 @@ autocmd BufWritePre *.cs call OmniSharp#actions#format#Format(function('s:CBCode
 
 ]])
 
-require 'lspconfig'.gopls.setup(coq.lsp_ensure_capabilities {
+require 'lspconfig'.gopls.setup({
   capabilities = capabilities,
   on_attach = on_attach
 })
 
 
 -- scripting
-lsp.vimls.setup(coq.lsp_ensure_capabilities {
+lsp.vimls.setup({
   on_attach = on_attach,
 })
-lsp.pyright.setup(coq.lsp_ensure_capabilities {
+lsp.pyright.setup({
   on_attach = on_attach,
 })
-lsp.bashls.setup(coq.lsp_ensure_capabilities {
+lsp.bashls.setup({
   on_attach = on_attach,
 })
-lsp.lua_ls.setup(coq.lsp_ensure_capabilities {
+lsp.lua_ls.setup({
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -235,10 +232,61 @@ lsp.lua_ls.setup(coq.lsp_ensure_capabilities {
 })
 
 
--- completion
-require("coq_3p") {
-  { src = "nvimlua", short_name = "nLUA", conf_only = true },
-  { src = "bc",      short_name = "MATH", precision = 6 },
-}
+-- Set up nvim-cmp.
+local cmp = require 'cmp'
 
-vim.cmd("COQnow -s")
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+    end,
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'vsnip' }, -- For vsnip users.
+    { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Set configuration for specific filetype.
+cmp.setup.filetype('gitcommit', {
+  sources = cmp.config.sources({
+    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
