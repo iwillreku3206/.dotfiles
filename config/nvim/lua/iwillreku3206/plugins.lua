@@ -27,18 +27,14 @@ require("lazy").setup({
   {
     'dracula/vim',
     name = 'dracula',
-    config = function() vim.cmd('colorscheme dracula') end
+    config = require('iwillreku3206.plugins.dracula').config,
+    priority = 99
   },
 
   -- files
   {
     'kyazdani42/nvim-tree.lua',
-    config = function()
-      require('nvim-tree').setup {
-        git = { ignore = false },
-        remove_keymaps = { "f" }
-      }
-    end,
+    config = require('iwillreku3206.plugins.nvim_tree').config,
     dependencies = { "nvim-web-devicons" }
   },
   {
@@ -50,35 +46,23 @@ require("lazy").setup({
   -- ui
   {
     'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup {
-        options = {
-          theme = 'powerline_dark'
-        }
-      }
-    end
+    config = require('iwillreku3206.plugins.lualine').config,
   },
   {
     "startup-nvim/startup.nvim",
     dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
-    config = function()
-      require "startup".setup()
-    end
+    config = require('iwillreku3206.plugins.startup').config,
   },
   {
     'edluffy/hologram.nvim',
-    config = function()
-      require('hologram').setup { auto_display = true }
-    end
+    config = require('iwillreku3206.plugins.hologram').config,
   },
 
   -- treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('iwillreku3206.plugins.treesitter')
-    end,
-    run = function() vim.cmd(':TSUpdate') end
+    config = require('iwillreku3206.plugins.treesitter').config,
+    build = require('iwillreku3206.plugins.treesitter').build,
   },
 
 
@@ -86,7 +70,6 @@ require("lazy").setup({
 
   'neovim/nvim-lspconfig',
   'p00f/clangd_extensions.nvim',
-  { 'fatih/vim-go',       run = ":GoInstallBinaries" },
   'williamboman/nvim-lsp-installer',
   'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
@@ -97,120 +80,133 @@ require("lazy").setup({
   'saadparwaiz1/cmp_luasnip',
 
   -- language specific
-  'neoclide/jsonc.vim',
-  'google/vim-jsonnet',
-  'habamax/vim-godot',
+  {
+    'fatih/vim-go',
+    build = require('iwillreku3206.plugins.vim-go').build,
+    lazy = true,
+    ft = "go"
+  },
+  {
+    'neoclide/jsonc.vim',
+    lazy = true,
+    ft = { 'jsonc', "json" }
+  },
+  {
+    'google/vim-jsonnet',
+    lazy = true,
+    ft = "jsonnet"
+  },
+  {
+    'habamax/vim-godot',
+    lazy = true,
+    ft = "gdscript"
+  },
   {
     'princejoogie/tailwind-highlight.nvim',
     dependencies = { "neovim/nvim-lspconfig", "nvim-lsp-installer" },
-    config = function()
-      local tw_highlight = require('tailwind-highlight')
-      require('lspconfig').tailwindcss.setup({
-        on_attach = function(client, bufnr)
-          tw_highlight.setup(client, bufnr, {
-            single_column = false,
-            mode = 'background',
-            debounce = 200,
-          })
-        end
-      })
-    end
   },
-  'captbaritone/better-indent-support-for-php-with-html',
-  'OmniSharp/omnisharp-vim',
-  'mfussenegger/nvim-jdtls',
-  'vim-pandoc/vim-pandoc',
-  'vim-pandoc/vim-pandoc-syntax',
   {
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function() vim.g.mkdp_filetypes = { "markdown" } end,
-    ft = { "markdown" },
+    'captbaritone/better-indent-support-for-php-with-html',
+    lazy = true,
+    ft = "php"
+  },
+  {
+    'OmniSharp/omnisharp-vim',
+    lazy = true,
+    ft = { "cs", "cshtml" }
+  },
+  {
+    'mfussenegger/nvim-jdtls',
+    lazy = true,
+    ft = 'java'
+  },
+  {
+    'vim-pandoc/vim-pandoc',
+    lazy = true,
+    ft = { "pandoc", "markdown", "md" }
+  },
+  {
+    'vim-pandoc/vim-pandoc-syntax',
+    lazy = true,
+    ft = { "pandoc", "markdown", "md" }
   },
   'MunifTanjim/prettier.nvim',
   {
     'MunifTanjim/eslint.nvim',
     dependencies = { 'jose-elias-alvarez/null-ls.nvim', 'MunifTanjim/eslint.nvim' },
-    config = function()
-      require('eslint').setup({
-        bin = 'eslint', -- or `eslint_d`
-        code_actions = {
-          enable = true,
-          apply_on_save = {
-            enable = true,
-            types = { "directive", "problem", "suggestion", "layout" },
-          },
-          disable_rule_comment = {
-            enable = true,
-            location = "separate_line", -- or `same_line`
-          },
-        },
-        diagnostics = {
-          enable = true,
-          report_unused_disable_directives = false,
-          run_on = "type", -- or `save`
-        },
-      })
-    end
+    config = require('iwillreku3206.plugins.eslint').config,
   },
   'gpanders/editorconfig.nvim',
-  'wuelnerdotexe/vim-astro',
+  {
+    'wuelnerdotexe/vim-astro',
+    ft = "astro",
+    lazy = true
+  },
 
   -- games
 
-  'alec-gibson/nvim-tetris',
-  'seandewar/nvimesweeper',
-  { 'jim-fx/sudoku.nvim', config = function() require('sudoku').setup{} end },
+  {
+    'alec-gibson/nvim-tetris',
+    cmd = "Tetris",
+    lazy = true
+  },
+  {
+    'seandewar/nvimesweeper',
+    cmd = "Nvimesweeper",
+    lazy = true
+  },
+  {
+    'jim-fx/sudoku.nvim',
+    config = require('iwillreku3206.plugins.sudoku').config,
+    cmd = "Sudoku",
+    lazy = true
+  },
 
   -- tools
-  'kdheepak/lazygit.nvim',
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = { "LazyGit", "LazyGitConfig", "LazyGitFilter", "LazyGitCurrentFile", "LazyGitFilterCurrentFile" },
+    lazy = true
+  },
   {
     "ziontee113/color-picker.nvim",
-    config = function()
-      require("color-picker")
-    end,
+    config = require('iwillreku3206.plugins.color-picker').config,
+    lazy = false
   },
   {
     "folke/trouble.nvim",
     dependencies = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {}
-    end
+    config = require('iwillreku3206.plugins.trouble').config,
   },
   'stevearc/profile.nvim',
 
   -- utils
   {
     "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
+    config = require('iwillreku3206.plugins.nvim-autopairs').config,
   },
   {
     "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end
+    config = require('iwillreku3206.plugins.nvim-surround').config,
   },
   {
     'norcalli/nvim-colorizer.lua',
-    config = function() require 'colorizer'.setup() end
+    config = require('iwillreku3206.plugins.nvim-colorizer').config,
   },
   {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require 'null-ls'.setup({
-        on_attach = function(client, bufnr)
-          if client.server_capabilities.documentFormattingProvider then
-            -- format on save
-            vim.cmd("autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()")
-          end
-        end,
-      })
-    end
+    config = require('iwillreku3206.plugins.null-ls').config,
   },
   "github/copilot.vim",
-  'andweeb/presence.nvim',
-  'dstein64/vim-startuptime'
-})
+  {
+    'andweeb/presence.nvim',
+    priority = 25,
+  },
+  {
+    'dstein64/vim-startuptime',
+    lazy = true,
+    cmd = "StartupTime",
+  }
+}
+)

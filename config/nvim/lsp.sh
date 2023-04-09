@@ -1,54 +1,25 @@
 #!/bin/bash
 
 # ts/js
-npm install -g typescript typescript-language-server
+npm install -g \
+  typescript \
+  vscode-langservers-extracted \
+  cssmodules-language-server \
+  dockerfile-language-server-nodejs \
+  svelte-language-server \
+  vim-language-server \
+  vls \
+  bash-language-server \
+  emmet-ls \
+  @tailwindcss/language-server \
+  prettier \
+  @astrojs/language-server \
+  graphql-language-service-cli \
+  sql-language-server
 
-# html/css/eslint/json
-npm i -g vscode-langservers-extracted
 
-# css modules
-npm install -g cssmodules-language-server
-
-# cmake
 pip3 install cmake-language-server
-
-# docker
-npm install -g dockerfile-language-server-nodejs
-
-# svelte
-npm install -g svelte-language-server
-
-# vimscript
-npm install -g vim-language-server
-
-# vue/vetur
-npm install -g vls
-
-# bash
-npm i -g bash-language-server
-
-# emmet
-npm install -g emmet-ls
-
-# phan
 composer require phan/phan
-
-# tailwind
-npm install -g @tailwindcss/language-server
-
-# prettier
-npm install -g prettier
-
-# astro
-npm install -g @astrojs/language-server
-
-# graphql
-npm install -g graphql-language-service-cli
-
-# sql
-npm i -g sql-language-server
-
-#arduino
 go install github.com/arduino/arduino-language-server@latest
 
 
