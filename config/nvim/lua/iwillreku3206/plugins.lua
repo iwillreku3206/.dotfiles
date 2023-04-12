@@ -17,6 +17,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- testing
+  {
+    dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
+    config = function()
+      require("markdown-preview").setup{}
+    end,
+  },
+
   -- dependencies
   'nvim-lua/plenary.nvim',
   { 'm00qek/baleia.nvim', tag = 'v1.2.0' },
@@ -141,6 +149,12 @@ require("lazy").setup({
     'wuelnerdotexe/vim-astro',
     ft = "astro",
     lazy = true
+  },
+  {
+    "folke/neodev.nvim",
+    lazy = true,
+    ft = "lua",
+    config = require('iwillreku3206.plugins.neodev').config,
   },
 
   -- games
