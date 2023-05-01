@@ -1,7 +1,9 @@
 vim.keymap.set('n', 'gg', ':LazyGit<CR>', { silent = true, noremap = true })
 vim.keymap.set('n', 'tr', ':NvimTreeOpen<CR>', { silent = true, noremap = true })
+vim.g.mapleader = ' '
 
 local telescope_builtin = require('telescope.builtin')
+
 vim.keymap.set('n', 'ff', telescope_builtin.find_files, {})
 vim.keymap.set('n', 'fg', telescope_builtin.live_grep, {})
 vim.keymap.set('n', 'fm', telescope_builtin.man_pages, {})
