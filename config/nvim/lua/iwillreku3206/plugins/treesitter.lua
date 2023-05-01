@@ -58,7 +58,7 @@ local function config()
 end
 
 local function build()
-  vim.cmd('TsUpdate')
+--   vim.cmd('TsUpdate')
 end
 
 return {
