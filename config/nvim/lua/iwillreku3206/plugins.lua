@@ -21,23 +21,29 @@ require("lazy").setup({
   {
     dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
     config = function()
-      require("markdown-preview").setup{}
+      require("markdown-preview").setup {}
     end,
   },
 
   -- dependencies
   'nvim-lua/plenary.nvim',
-  { 'm00qek/baleia.nvim', tag = 'v1.2.0' },
+  { 'm00qek/baleia.nvim',                 tag = 'v1.2.0' },
   'kyazdani42/nvim-web-devicons',
   'rcarriga/nvim-notify',
 
-  -- color scheme
+  -- color schemes
   {
     'dracula/vim',
     name = 'dracula',
     config = require('iwillreku3206.plugins.dracula').config,
     priority = 99
   },
+  {
+    'folke/tokyonight.nvim',
+    --    config = require('iwillreku3206.plugins.tokyonight').config,
+    priority = 99
+  },
+  'tomasiser/vim-code-dark',
 
   -- files
   {
@@ -65,6 +71,7 @@ require("lazy").setup({
     'edluffy/hologram.nvim',
     config = require('iwillreku3206.plugins.hologram').config,
   },
+  { "lukas-reineke/indent-blankline.nvim" },
 
   -- treesitter
   {
