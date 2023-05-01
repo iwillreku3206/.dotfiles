@@ -1,6 +1,6 @@
 configuration {
 	modi: "window,run,ssh,drun";
-/*	font: "mono 12";*/
+	font: "VictorMono NF 12";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
@@ -146,4 +146,4 @@ configuration {
   }
 }
 
-@theme "./theme"
+@theme "./dracula"
