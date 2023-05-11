@@ -7,3 +7,4 @@ ln -sf ~/.dotfiles/.zshrc ~/.zshrc
 ln -sf ~/.dotfiles/.p10k.zsh ~/.p10k.zsh
 ln -sf ~/.dotfiles/config/nvim ~/.config/nvim
 ln -sf ~/.dotfiles/config/kitty ~/.config/kitty
+ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
