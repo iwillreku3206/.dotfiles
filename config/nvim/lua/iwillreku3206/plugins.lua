@@ -21,7 +21,7 @@ require("lazy").setup({
   {
     dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
     config = function()
-      require("markdown-preview").setup {}
+      require("markdown-preview").setup { start_server = false }
     end,
   },
 
