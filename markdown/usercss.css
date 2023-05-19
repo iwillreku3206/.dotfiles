@@ -176,11 +176,19 @@ h6 {
 }
 
 math {
-  display: block;
+  display: block math;
   text-align: left;
 
   font-family: 'Stix Two Math', sans-serif !important;
   font-size: 20px
+}
+
+span.math {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: left;
+  padding: 0.5rem;
 }
 
 code {
