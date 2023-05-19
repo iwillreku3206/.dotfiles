@@ -21,7 +21,7 @@ require("lazy").setup({
   {
     dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
     config = function()
-      require("markdown-preview").setup { start_server = false }
+      require("markdown-preview").setup { start_server = false, css = "/home/rek/.dotfiles/markdown/usercss.css" }
     end,
   },
 
@@ -93,6 +93,16 @@ require("lazy").setup({
   'hrsh7th/nvim-cmp',
   'L3MON4D3/LuaSnip',
   'saadparwaiz1/cmp_luasnip',
+  "lervag/vimtex",
+  --"evesdropper/luasnip-latex-snippets.nvim",
+  --{
+  --  "iurimateus/luasnip-latex-snippets.nvim",
+  -- replace "lervag/vimtex" with "nvim-treesitter/nvim-treesitter" if you're
+  -- using treesitter.
+  --  dependencies = { "L3MON4D3/LuaSnip", "lervag/vimtex" },
+  -- treesitter is required for markdown
+  --  ft = { "tex", "markdown" },
+  --},
 
   -- language specific
   {

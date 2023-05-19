@@ -22,6 +22,8 @@ end
 -- general
 require('iwillreku3206.lsp_setup.general.dockerls')(lsp, capabilities, on_attach)
 require('iwillreku3206.lsp_setup.general.jsonls')(lsp, capabilities, on_attach)
+require('iwillreku3206.lsp_setup.general.ltex')(lsp, capabilities, on_attach)
+require('iwillreku3206.lsp_setup.general.texlab')(lsp, capabilities, on_attach)
 
 -- web
 require('iwillreku3206.lsp_setup.web.astro')(lsp, capabilities, on_attach)
