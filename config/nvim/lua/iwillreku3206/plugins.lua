@@ -99,7 +99,12 @@ require("lazy").setup({
     build = "make install_jsregexp"
   },
   'saadparwaiz1/cmp_luasnip',
-  "lervag/vimtex",
+  "kdheepak/cmp-latex-symbols",
+  "hrsh7th/cmp-emoji",
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-calc',
+  'chrisgrieser/cmp-nerdfont',
+
   --"evesdropper/luasnip-latex-snippets.nvim",
   --{
   --  "iurimateus/luasnip-latex-snippets.nvim",
@@ -111,6 +116,7 @@ require("lazy").setup({
   --},
 
   -- language specific
+  "lervag/vimtex",
   {
     'fatih/vim-go',
     build = require('iwillreku3206.plugins.vim-go').build,

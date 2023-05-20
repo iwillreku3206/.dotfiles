@@ -75,6 +75,12 @@ load-nvmrc
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 alias :q=exit
+alias :qa=exit
+alias :wq=exit
+alias :wqa=exit
+
+alias vim=nvim
+
 source ~/.dotfiles/zsh-scripts/*.sh
 neofetch --ascii_distro Windows7
 
