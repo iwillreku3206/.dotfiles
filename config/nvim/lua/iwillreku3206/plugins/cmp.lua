@@ -25,6 +25,16 @@ cmp.setup({
     -- { name = 'snippy' }, -- For snippy users.
   }, {
     { name = 'buffer' },
+    { name = 'path' },
+    { name = 'calc' },
+    { name = 'emoji' },
+    { name = 'nerdfont' },
+    {
+      name = "latex_symbols",
+      option = {
+        strategy = 0, -- mixed
+      },
+    },
   })
 })
 
