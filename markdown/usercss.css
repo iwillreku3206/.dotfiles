@@ -176,7 +176,7 @@ h6 {
 }
 
 math {
-  display: block math;
+  display: inline-block math;
   text-align: left;
 
   font-family: 'Stix Two Math', sans-serif !important;
