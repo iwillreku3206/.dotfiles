@@ -24,6 +24,10 @@ require("lazy").setup({
       require("markdown-preview").setup { start_server = false, css = "/home/rek/.dotfiles/markdown/usercss.css" }
     end,
   },
+  {
+    dir = "/home/rek/Coding/nvim/nvim-emailclient",
+    dev = true
+  },
 
   -- dependencies
   'nvim-lua/plenary.nvim',
@@ -99,7 +103,11 @@ require("lazy").setup({
     build = "make install_jsregexp"
   },
   'saadparwaiz1/cmp_luasnip',
-  "kdheepak/cmp-latex-symbols",
+  {
+    "kdheepak/cmp-latex-symbols",
+    ft = { 'markdown' },
+    lazy = true
+  },
   "hrsh7th/cmp-emoji",
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-calc',
@@ -253,3 +261,4 @@ require("lazy").setup({
   }
 }
 )
+

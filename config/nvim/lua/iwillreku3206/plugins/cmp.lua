@@ -1,5 +1,5 @@
 local cmp = require 'cmp'
-local luasnip = require'luasnip'
+local luasnip = require 'luasnip'
 
 cmp.setup({
   snippet = {
@@ -16,12 +16,12 @@ cmp.setup({
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),     -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable() 
-      -- they way you will only jump inside the snippet region
+        -- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+        -- they way you will only jump inside the snippet region
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       else
@@ -39,10 +39,18 @@ cmp.setup({
     { name = 'buffer' },
     { name = 'path' },
     { name = 'calc' },
-    { name = 'emoji' },
-    { name = 'nerdfont' },
+    {
+      name = 'emoji',
+      max_item_count = 7
+    },
+    {
+      name = 'nerdfont',
+      max_item_count = 7,
+    },
     {
       name = "latex_symbols",
+      max_item_count = 7,
+      priority = 99,
       option = {
         strategy = 0, -- mixed
       },
