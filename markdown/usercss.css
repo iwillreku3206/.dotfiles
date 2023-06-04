@@ -175,20 +175,17 @@ h6 {
   font-size: 1.3rem;
 }
 
-math {
-  display: inline-block math;
-  text-align: left;
+math, mjx-container {
+  display: inline-block math; 
+  text-align: left !important;
 
-  font-family: 'Stix Two Math', sans-serif !important;
+  font-family: 'Comic Sans MS' 'Stix Two Math', sans-serif !important;
   font-size: 20px
 }
 
 span.math {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  align-items: left;
   padding: 0.5rem;
+  text-align: left;
 }
 
 code {
@@ -209,10 +206,46 @@ blockquote {
   padding-bottom: 0.25rem;
   font-style: italic;
 }
-
 img {
   max-width: 50%;
   display: block;
+}
+
+.kanban {
+	display: grid;
+	width: fit-content;
+	background-color: #c0c0ff;
+	padding: 2rem;
+	column-gap: 1rem;
+}
+
+.kanban > p {
+	font-size: 1.125rem;
+	font-weight: bold;
+	margin: 0;
+	grid-row: 1;
+	background-color: white;
+	border-radius: 0.5rem 0.5rem 0 0;
+	padding: 1rem;
+	background-color: #e0e0e0;
+}
+.kanban > ul {
+	margin: 0;
+	grid-row: 2;
+	background-color: #e0e0e0;
+	border-radius: 0 0 0.5rem 0.5rem;
+	list-style-type: none;
+	padding: 0 1rem 1rem 1rem;
+	gap: 1rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.kanban > ul > li {
+	padding: 0.75rem;
+	min-width: 6rem;
+	border-radius: 0.5rem;
+	background-color: white;
 }
 
 /*

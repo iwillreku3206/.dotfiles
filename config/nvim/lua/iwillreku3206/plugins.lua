@@ -21,7 +21,7 @@ require("lazy").setup({
   {
     dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
     config = function()
-      require("markdown-preview").setup { start_server = false, css = "/home/rek/.dotfiles/markdown/usercss.css" }
+      require("markdown-preview").setup { start_server = true, css = "/home/rek/.dotfiles/markdown/usercss.css" }
     end,
   },
   {
@@ -249,7 +249,23 @@ require("lazy").setup({
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = require('iwillreku3206.plugins.null-ls').config,
   },
-  "github/copilot.vim",
+  {
+    'zbirenbaum/copilot.lua',
+    lazy = true,
+    event = "InsertEnter",
+    cmd = "Copilot",
+    config = function()
+      require("copilot").setup {
+        suggestion = { enabled = true, auto_trigger = true }
+      }
+    end
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  },
   {
     'andweeb/presence.nvim',
     priority = 25,
@@ -261,4 +277,3 @@ require("lazy").setup({
   }
 }
 )
-
