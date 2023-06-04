@@ -217,6 +217,7 @@ img {
 	background-color: #c0c0ff;
 	padding: 2rem;
 	column-gap: 1rem;
+	border-radius: 0.5rem;
 }
 
 .kanban > p {
@@ -227,12 +228,12 @@ img {
 	background-color: white;
 	border-radius: 0.5rem 0.5rem 0 0;
 	padding: 1rem;
-	background-color: #e0e0e0;
+	background-color: #e0e0f0;
 }
 .kanban > ul {
 	margin: 0;
 	grid-row: 2;
-	background-color: #e0e0e0;
+	background-color: #e0e0f0;
 	border-radius: 0 0 0.5rem 0.5rem;
 	list-style-type: none;
 	padding: 0 1rem 1rem 1rem;
@@ -245,7 +246,7 @@ img {
 	padding: 0.75rem;
 	min-width: 6rem;
 	border-radius: 0.5rem;
-	background-color: white;
+	background-color: #f0f0ff;
 }
 
 /*
