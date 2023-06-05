@@ -274,6 +274,12 @@ img {
   max-width: 6rem;
 	border-radius: 0.5rem;
 	background-color: #f0f0ff;
+  transition: all;
+  transition-duration: 66ms;
+}
+
+.kanban > ul > li:hover {
+  transform:scale(1.125);
 }
 
 .center {
