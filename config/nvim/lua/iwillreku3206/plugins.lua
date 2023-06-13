@@ -32,8 +32,9 @@ require("lazy").setup({
   -- dependencies
   'nvim-lua/plenary.nvim',
   { 'm00qek/baleia.nvim',                 tag = 'v1.2.0' },
-  'kyazdani42/nvim-web-devicons',
-  'rcarriga/nvim-notify',
+  'nvim-tree/nvim-web-devicons',
+  '2rcarriga/nvim-notify',
+  'lewis6991/gitsigns.nvim',
 
   -- color schemes
   {
@@ -51,7 +52,7 @@ require("lazy").setup({
 
   -- files
   {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     config = require('iwillreku3206.plugins.nvim_tree').config,
     dependencies = { "nvim-web-devicons" }
   },
@@ -76,6 +77,20 @@ require("lazy").setup({
     config = require('iwillreku3206.plugins.hologram').config,
   },
   { "lukas-reineke/indent-blankline.nvim" },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',     -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+  },
 
   -- treesitter
   {
@@ -226,7 +241,7 @@ require("lazy").setup({
   },
   {
     "folke/trouble.nvim",
-    dependencies = "kyazdani42/nvim-web-devicons",
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = require('iwillreku3206.plugins.trouble').config,
   },
   'stevearc/profile.nvim',

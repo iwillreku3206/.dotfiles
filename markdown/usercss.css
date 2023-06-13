@@ -3,6 +3,12 @@ body {
   font-family: Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+body, p {
+  overflow-wrap: normal;
+  word-wrap: normal;
+  word-break: normal;
+}
+
 h4, h5, h6 {
   margin-top: 0.5rem;
   margin-bottom: 1rem;
@@ -193,6 +199,16 @@ code {
   white-space: pre-wrap;
   background-color: #eee;
   padding: 0.5rem;
+
+  font-family: JetBrains Mono, monospace;
+  font-size: 12px;
+}
+
+p > code {
+  display: inline;
+  white-space: pre-wrap;
+  background-color: #eee;
+  padding: 0.25rem;
 
   font-family: JetBrains Mono, monospace;
   font-size: 12px;

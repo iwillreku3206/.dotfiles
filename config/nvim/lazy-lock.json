@@ -1,6 +1,7 @@
 {
   "LuaSnip": { "branch": "master", "commit": "500981ff6cefc7343e3959ef0f939bd0bfd49ba9" },
   "baleia.nvim": { "branch": "main", "commit": "c048a1d33d5bd4025254e94af2193c73fa8ec8f7" },
+  "barbar.nvim": { "branch": "master", "commit": "1a92a18e1ae470bf7e2152d6e064c733311d3adc" },
   "better-indent-support-for-php-with-html": { "branch": "master", "commit": "e907f07b53dd6d6b7b2f6956cd18202ef3f26c24" },
   "clangd_extensions.nvim": { "branch": "main", "commit": "6d0bf36870d15c0c2284f4b6693a66552a6bf127" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
@@ -18,6 +19,7 @@
   "dracula": { "branch": "master", "commit": "7bff6075cfb16b1dbfc053fff2e622b42cb532e4" },
   "editorconfig.nvim": { "branch": "master", "commit": "5b9e303e1d6f7abfe616ce4cc8d3fffc554790bf" },
   "eslint.nvim": { "branch": "main", "commit": "158f2289907d377018752fcfe0d61b746dc11767" },
+  "gitsigns.nvim": { "branch": "main", "commit": "4455bb5364d29ff86639dfd5533d4fe4b48192d4" },
   "hologram.nvim": { "branch": "main", "commit": "f5194f71ec1578d91b2e3119ff08e574e2eab542" },
   "indent-blankline.nvim": { "branch": "master", "commit": "ceaf730b13e332cd76600d9795722413c236c684" },
   "jsonc.vim": { "branch": "master", "commit": "6fb92460f9e50505c9b93181a00f27d10c9b383f" },

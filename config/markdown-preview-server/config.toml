@@ -1,0 +1,11 @@
+css_dir = "$HOME/.dotfiles/markdown/usercss.css"
+image_dir_enabled = true
+image_dir = "$HOME/.markdown-preview-server/images"
+template_dir = "$HOME/Coding/rust/markdown-preview-server/static_assets/templates.d"
+template = "default"
+feature_set = "default"
+log_level = "info"
+host = "127.0.0.1"
+port = 8080
+websocket_port = 8081
+frontend_address = "http://localhost:5173"
