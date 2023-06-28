@@ -226,6 +226,13 @@ img {
   max-width: 50%;
   display: block;
 }
+td, th {
+  border: 1px solid #444;
+  padding: 0.5rem;
+}
+table {
+  border-collapse: collapse;
+}
 
 .kanban {
 	display: grid;
