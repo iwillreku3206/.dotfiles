@@ -10,3 +10,4 @@ ln -sf ~/.dotfiles/config/kitty ~/.config/kitty
 ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -sf ~/.dotfiles/.tmux-powerlinerc ~/.tmux-powerlinerc
 ln -sf ~/.dotfiles/config/tmux-powerline ~/.config/tmux-powerline
+ln -sf ~/.dotfiles/config/ranger/ ~/.config/ranger

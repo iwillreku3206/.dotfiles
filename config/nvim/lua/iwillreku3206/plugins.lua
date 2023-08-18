@@ -77,6 +77,7 @@ require("lazy").setup({
     config = require('iwillreku3206.plugins.hologram').config,
   },
   { "lukas-reineke/indent-blankline.nvim" },
+  'francoiscabrol/ranger.vim',
   {
     'romgrk/barbar.nvim',
     dependencies = {
@@ -245,6 +246,8 @@ require("lazy").setup({
     config = require('iwillreku3206.plugins.trouble').config,
   },
   'stevearc/profile.nvim',
+  'puremourning/vimspector',
+  'wakatime/vim-wakatime',
 
   -- utils
   {
