@@ -49,6 +49,7 @@ export NVM_DIR="$HOME/.nvm"
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$HOME/.cargo/bin
 
 autoload -U add-zsh-hook
 load-nvmrc() {
