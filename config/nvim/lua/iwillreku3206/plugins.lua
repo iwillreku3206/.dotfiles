@@ -33,7 +33,7 @@ require("lazy").setup({
   'nvim-lua/plenary.nvim',
   { 'm00qek/baleia.nvim',                 tag = 'v1.2.0' },
   'nvim-tree/nvim-web-devicons',
-  '2rcarriga/nvim-notify',
+  'rcarriga/nvim-notify',
   'lewis6991/gitsigns.nvim',
 
   -- color schemes

@@ -4,6 +4,7 @@ local function setup(lsp, capabilities, on_attach)
 lsp.sqlls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  root_dir = lsp.util.root_pattern('.git', vim.fn.getcwd()),
 })
 end
 
