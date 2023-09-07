@@ -181,11 +181,22 @@ h6 {
   font-size: 1.3rem;
 }
 
-math, mjx-container {
-  display: inline-block math; 
-  text-align: left;
+math:not(.math-inline) {
+  display: block math !important;
+}
 
-  font-family: 'Comic Sans MS' 'Stix Two Math', sans-serif !important;
+.math-inline {
+  display: inline-block math !important;
+}
+
+mjx-container {
+  display: block !important;
+}
+
+math, mjx-container, .katex {
+  text-align: left !important;
+
+  font-family: 'Stix Two Math', sans-serif !important;
   font-size: 20px
 }
 
@@ -670,5 +681,6 @@ font-weight: bold;
 .syntect-variable.syntect-other.syntect-readwrite.syntect-js, .syntect-variable.syntect-other.syntect-object.syntect-js, .syntect-variable.syntect-other.syntect-constant.syntect-js {
  color: #657b83;
 }
+
 
 

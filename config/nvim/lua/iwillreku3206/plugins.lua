@@ -21,7 +21,7 @@ require("lazy").setup({
   {
     dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
     config = function()
-      require("markdown-preview").setup { start_server = true, css = "/home/rek/.dotfiles/markdown/usercss.css" }
+      require("markdown-preview").setup { start_server = true, css = "/home/rek/.dotfiles/markdown/usercss.css", config = "/home/rek/.dotfiles/config/markdown-preview-server/config.toml" }
     end,
   },
   {
