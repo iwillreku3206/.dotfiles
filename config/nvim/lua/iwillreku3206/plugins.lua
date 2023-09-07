@@ -21,7 +21,7 @@ require("lazy").setup({
   {
     dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
     config = function()
-      require("markdown-preview").setup { start_server = true, css = "/home/rek/.dotfiles/markdown/usercss.css" }
+      require("markdown-preview").setup { start_server = true, css = "/home/rek/.dotfiles/markdown/usercss.css", config = "/home/rek/.dotfiles/config/markdown-preview-server/config.toml" }
     end,
   },
   {
@@ -33,7 +33,7 @@ require("lazy").setup({
   'nvim-lua/plenary.nvim',
   { 'm00qek/baleia.nvim',                 tag = 'v1.2.0' },
   'nvim-tree/nvim-web-devicons',
-  '2rcarriga/nvim-notify',
+  'rcarriga/nvim-notify',
   'lewis6991/gitsigns.nvim',
 
   -- color schemes
@@ -77,6 +77,7 @@ require("lazy").setup({
     config = require('iwillreku3206.plugins.hologram').config,
   },
   { "lukas-reineke/indent-blankline.nvim" },
+  'francoiscabrol/ranger.vim',
   {
     'romgrk/barbar.nvim',
     dependencies = {
@@ -257,6 +258,8 @@ require("lazy").setup({
     config = require('iwillreku3206.plugins.trouble').config,
   },
   'stevearc/profile.nvim',
+  'puremourning/vimspector',
+  'wakatime/vim-wakatime',
 
   -- utils
   {

@@ -12,10 +12,10 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'H', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', 'gD', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', 'gR', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', 'gC', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 end
 
@@ -54,6 +54,7 @@ require('iwillreku3206.lsp_setup.low_level.clangd_extensions')(lsp, capabilities
 require('iwillreku3206.lsp_setup.low_level.cmake')(lsp, capabilities, on_attach)
 require('iwillreku3206.lsp_setup.low_level.gopls')(lsp, capabilities, on_attach)
 require('iwillreku3206.lsp_setup.low_level.rust_analyzer')(lsp, capabilities, on_attach)
+require('iwillreku3206.lsp_setup.low_level.asm-lsp')(lsp, capabilities, on_attach)
 
 -- runtimes
 require('iwillreku3206.lsp_setup.runtimes.jdtls')(lsp, capabilities, on_attach)
