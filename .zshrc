@@ -81,6 +81,8 @@ alias :wq=exit
 alias :wqa=exit
 
 alias vim=nvim
+alias siopao=bun
+alias siopaox=bunx
 
 source ~/.dotfiles/zsh-scripts/*.sh
 neofetch --ascii_distro Windows7
@@ -99,3 +101,6 @@ export PATH="/usr/local/sbin:$PATH"
 autoload bashcompinit
 bashcompinit
 source /opt/vcpkg/scripts/vcpkg_completion.zsh
+
+# bun completions
+[ -s "/home/rek/.bun/_bun" ] && source "/home/rek/.bun/_bun"
