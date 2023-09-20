@@ -21,7 +21,8 @@ require("lazy").setup({
   {
     dir = "/home/rek/Coding/nvim/markdown-preview-server.nvim",
     config = function()
-      require("markdown-preview").setup { start_server = true, css = "/home/rek/.dotfiles/markdown/usercss.css", config = "/home/rek/.dotfiles/config/markdown-preview-server/config.toml" }
+      require("markdown-preview").setup { start_server = true, css = "/home/rek/.dotfiles/markdown/usercss.css", config =
+      "/home/rek/.dotfiles/config/markdown-preview-server/config.toml" }
     end,
   },
   {
@@ -76,6 +77,12 @@ require("lazy").setup({
     'edluffy/hologram.nvim',
     config = require('iwillreku3206.plugins.hologram').config,
   },
+  {
+    'https://github.com/adelarsq/image_preview.nvim',
+    config = function()
+      require("image_preview").setup()
+    end
+  },
   { "lukas-reineke/indent-blankline.nvim" },
   'francoiscabrol/ranger.vim',
   {
@@ -101,8 +108,8 @@ require("lazy").setup({
     -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
     cond = not not vim.g.started_by_firenvim,
     build = function()
-        require("lazy").load({ plugins = "firenvim", wait = true })
-        vim.fn["firenvim#install"](0)
+      require("lazy").load({ plugins = "firenvim", wait = true })
+      vim.fn["firenvim#install"](0)
     end
   },
   -- treesitter

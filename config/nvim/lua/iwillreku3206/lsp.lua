@@ -51,6 +51,7 @@ require('iwillreku3206.lsp_setup.game_dev.gdscript')(lsp, capabilities, on_attac
 -- low level
 require('iwillreku3206.lsp_setup.low_level.arduino_language_server')(lsp, capabilities, on_attach)
 require('iwillreku3206.lsp_setup.low_level.clangd_extensions')(lsp, capabilities, on_attach)
+require('iwillreku3206.lsp_setup.low_level.clangd')(lsp, capabilities, on_attach)
 require('iwillreku3206.lsp_setup.low_level.cmake')(lsp, capabilities, on_attach)
 require('iwillreku3206.lsp_setup.low_level.gopls')(lsp, capabilities, on_attach)
 require('iwillreku3206.lsp_setup.low_level.rust_analyzer')(lsp, capabilities, on_attach)
