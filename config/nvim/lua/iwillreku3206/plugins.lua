@@ -32,7 +32,7 @@ require("lazy").setup({
 
   -- dependencies
   'nvim-lua/plenary.nvim',
-  { 'm00qek/baleia.nvim',                 tag = 'v1.2.0' },
+  { 'm00qek/baleia.nvim',                 tag = 'v1.3.0' },
   'nvim-tree/nvim-web-devicons',
   'rcarriga/nvim-notify',
   'lewis6991/gitsigns.nvim',
@@ -59,7 +59,7 @@ require("lazy").setup({
   },
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.0',
+    tag = '0.1.4',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
 

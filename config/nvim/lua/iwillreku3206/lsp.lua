@@ -1,6 +1,8 @@
 local lsp = require 'lspconfig'
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.workspace = { didChangeWatchedFiles = { dynamicRegistration = true } }
 
 local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>

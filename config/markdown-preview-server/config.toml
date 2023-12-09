@@ -2,7 +2,7 @@
 image_dir_enabled = true
 image_dir = "$HOME/.markdown-preview-server/images"
 template_dir = "$HOME/.dotfiles/markdown/templates"
-template = "textbook"
+template = "default"
 feature_set = "all"
 log_level = "info"
 host = "127.0.0.1"

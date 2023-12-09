@@ -19,7 +19,6 @@ local function config()
       "go",
       "godot_resource",
       "graphql",
-      "help",
       "html",
       "http",
       "http",

@@ -90,3 +90,4 @@ cmp.setup.cmdline(':', {
 
 --require 'luasnip-latex-snippets'.setup { use_treesitter = true }
 require("luasnip.loaders.from_snipmate").lazy_load()
+require("iwillreku3206.cmp_hack")
