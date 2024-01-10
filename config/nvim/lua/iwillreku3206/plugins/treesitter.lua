@@ -48,16 +48,19 @@ local function config()
       "vue",
       "yaml"
     },
-    auto_install = true,
     highlight = {
       enable = true,
       additional_vim_regex_highlighting = false,
+    },
+    indent = {
+      enable = true,
+      disable = { "python" },
     },
   }
 end
 
 local function build()
---   vim.cmd('TsUpdate')
+  --   vim.cmd('TsUpdate')
 end
 
 return {
