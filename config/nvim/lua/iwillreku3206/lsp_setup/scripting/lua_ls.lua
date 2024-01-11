@@ -12,7 +12,7 @@ local function setup(lsp, capabilities, on_attach)
           globals = { 'vim' },
         },
         workspace = {
-          library = { "/home/rek/CC-Tweaked-EmmyLua" },
+          library = { [vim.fn.expand "~/CC-Tweaked-EmmyLua"] = true,[vim.fn.expand "~/Coding/nvim/websocket.nvim/lua/rocks/share/lua/5.1"] = true },
         },
         telemetry = {
           enable = false,

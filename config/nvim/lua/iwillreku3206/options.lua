@@ -8,7 +8,10 @@ vim.api.nvim_set_option('title', true)
 vim.api.nvim_set_option('clipboard', 'unnamedplus')
 vim.api.nvim_create_autocmd("BufWritePost", {
   callback = function()
+    vim.schedule(function()
+    
     vim.lsp.buf.format()
+    end)
   end
 })
 vim.cmd('set updatetime=50')

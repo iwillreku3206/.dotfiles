@@ -104,3 +104,15 @@ source /opt/vcpkg/scripts/vcpkg_completion.zsh
 
 # bun completions
 [ -s "/home/rek/.bun/_bun" ] && source "/home/rek/.bun/_bun"
+
+# bun completions
+[ -s "/Users/rek/.bun/_bun" ] && source "/Users/rek/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# luarocks
+if [[ $(uname) == "Darwin" ]]; then
+	export PATH="/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
+fi
