@@ -37,4 +37,9 @@ vim.keymap.set('n', '<M-a>8', '<C-\\><C-n>:tabn 8<CR>', { silent = true, noremap
 vim.keymap.set('n', '<M-a>9', '<C-\\><C-n>:tabn 9<CR>', { silent = true, noremap = true })
 
 vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { silent = true, noremap = true })
-vim.keymap.set('n', 'fr', ':Ranger<CR>', { silent = true, noremap = true }) 
+vim.keymap.set('n', 'fr', ':Ranger<CR>', { silent = true, noremap = true })
+
+vim.keymap.set('i', '<C-h>', "<Esc>hi", { silent = true, noremap = true })
+vim.keymap.set('i', '<C-j>', "<Esc>ji", { silent = true, noremap = true })
+vim.keymap.set('i', '<C-k>', "<Esc>ki", { silent = true, noremap = true })
+vim.keymap.set('i', '<C-l>', "<Esc>li", { silent = true, noremap = true })
