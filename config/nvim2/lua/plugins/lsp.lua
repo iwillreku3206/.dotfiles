@@ -57,7 +57,6 @@ return {
       require('iwillreku3206.lsp_setup.low_level.clangd')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.low_level.cmake')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.low_level.gopls')(lsp, capabilities, on_attach)
-      require('iwillreku3206.lsp_setup.low_level.rust_analyzer')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.low_level.asm-lsp')(lsp, capabilities, on_attach)
 
       -- runtimes
