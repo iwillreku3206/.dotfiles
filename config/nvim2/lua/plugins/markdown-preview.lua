@@ -5,7 +5,7 @@ return {
 		dev = true,
 		config = function()
 			local binary = vim.fn.expand(
-			"$HOME/Coding/rust/markdown-preview-server/target/release/markdown-preview-server")
+			"$HOME/Coding/rust/markdown-preview-server/target/debug/markdown-preview-server")
 			require("markdown-preview").setup({ binary = binary })
 		end
 	}
