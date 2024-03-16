@@ -1,8 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -52,28 +47,13 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH=$PATH:$HOME/.cargo/bin
 
 autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# fnm
+eval "$(fnm env --use-on-cd)"
 
 # zsh completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+source "$HOME/.dotfiles/zsh-scripts/fnm_completions.zsh"
 
 alias :q=exit
 alias :qa=exit
@@ -85,7 +65,7 @@ alias siopao=bun
 alias siopaox=bunx
 
 source ~/.dotfiles/zsh-scripts/*.sh
-neofetch --ascii_distro Windows7
+pfetch
 
 #export MSBuildSDKsPath=$( echo /usr/share/dotnet/sdk/7.*/Sdks );
 
@@ -97,7 +77,8 @@ export PATH="/usr/local/sbin:$PATH"
 
 autoload bashcompinit
 bashcompinit
-source /opt/vcpkg/scripts/vcpkg_completion.zsh
+
+[ -s "/opt/vcpkg/scripts/vcpkg_completion.zsh" ] && source /opt/vcpkg/scripts/vcpkg_completion.zsh
 
 # bun completions
 [ -s "/home/rek/.bun/_bun" ] && source "/home/rek/.bun/_bun"
@@ -113,6 +94,3 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 if [[ $(uname) == "Darwin" ]]; then
 	export PATH="/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
 fi
-
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
