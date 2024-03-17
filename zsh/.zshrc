@@ -30,7 +30,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git  zsh-autosuggestions)
+plugins=(git zsh-autocomplete zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,7 +54,6 @@ eval "$(fnm env --use-on-cd)"
 # zsh completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source "$HOME/.dotfiles/zsh-scripts/fnm_completions.zsh"
-
 alias :q=exit
 alias :qa=exit
 alias :wq=exit
