@@ -45,6 +45,7 @@ return {
           "scss",
           "sql",
           "svelte",
+          "templ",
           "tsx",
           "typescript",
           "vim",

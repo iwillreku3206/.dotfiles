@@ -43,6 +43,7 @@ return {
       require('iwillreku3206.lsp_setup.web.sqlls')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.svelte')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.tailwindcss')(lsp, capabilities, on_attach)
+      require('iwillreku3206.lsp_setup.web.templ')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.tsserver')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.vuels')(lsp, capabilities, on_attach)
 

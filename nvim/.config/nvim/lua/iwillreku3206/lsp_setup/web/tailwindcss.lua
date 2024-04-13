@@ -4,15 +4,16 @@ local function setup(lsp, capabilities, on_attach)
 
   lsp.tailwindcss.setup({
     capabilities = capabilities,
-    on_attach = function (client, bufnr)
+    on_attach = function(client, bufnr)
+      tw_highlight.setup(client, bufnr, {
+        single_column = false,
+        mode = 'background',
+        debounce = 200,
+      })
       on_attach(client, bufnr)
-          tw_highlight.setup(client, bufnr, {
-            single_column = false,
-            mode = 'background',
-            debounce = 200,
-          })
-
     end,
+    -- filetypes = { "templ", "astro", "javascript", "typescript", "react", "html" },
+    -- init_options = { userLanguages = { templ = "html" } },
   })
 end
 
