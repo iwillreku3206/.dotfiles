@@ -1,0 +1,6 @@
+- name: Get system facts
+  hosts: localhost
+  tasks:
+  - name: "print"
+    ansible.builtin.debug:
+      msg: "Facts: {{ ansible_facts['os_family'] }}"
