@@ -1,0 +1,9 @@
+- name: Install Packages (Arch)
+  include_tasks:
+    file: install/install_arch.yml
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: Install Packages (Darwin)
+  include_tasks:
+    file: install/install_darwin.yml
+  when: ansible_facts['os_family'] == 'Darwin'

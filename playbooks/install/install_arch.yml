@@ -1,0 +1,20 @@
+- name: Setup pacman config
+  tasks:
+    - name: Enable parallel downloads
+      replace:
+        path: /etc/pacman.conf
+        regexp: '^#?ParallelDownloads = 5$'
+        replace: 'ParallelDownloads = 5'
+    - name: Enable multilib repository (1)
+      replace:
+        path: /etc/pacman.conf
+        regexp: '^#?\[multilib\]$'
+        replace: '[multilib]'
+    - name: Enable multilib repository (2)
+      replace:
+        path: /etc/pacman.conf
+        regexp: '^#?Include = /etc/pacman.d/mirrorlist$'
+        replace: 'Include = /etc/pacman.d/mirrorlist'
+- name: Update pacman database
+  pacman:
+    update_cache: true
