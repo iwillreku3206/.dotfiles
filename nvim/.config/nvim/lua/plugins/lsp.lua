@@ -37,6 +37,7 @@ return {
       require('iwillreku3206.lsp_setup.web.eslint')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.graphql')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.html')(lsp, capabilities, on_attach)
+      require('iwillreku3206.lsp_setup.web.htmx')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.phan')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.prettier')(lsp, capabilities, on_attach)
       require('iwillreku3206.lsp_setup.web.prismals')(lsp, capabilities, on_attach)
