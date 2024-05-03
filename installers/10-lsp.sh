@@ -35,7 +35,8 @@ install_npm() {
 		typescript-language-server \
 		vls \
 		bash-language-server \
-		vim-language-server
+		vim-language-server \
+		@ansible/ansible-language-server
 }
 
 install_go() {
@@ -100,7 +101,8 @@ install_pkgman() {
 			rust-analyzer \
 			jdtls \
 			omnisharp-mono \
-			lua-language-server
+			lua-language-server \
+      ansible-lint
 		return
 	fi
 
@@ -114,7 +116,9 @@ install_pkgman() {
 			rust-analyzer \
 			jdtls \
 			omnisharp-roslyn-bin \
-			lua-language-server
+			lua-language-server \
+      ansible-lint
+
 		return
 	fi
 
