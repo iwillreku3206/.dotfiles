@@ -15,11 +15,12 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 for f in ~/.dotfiles/zsh-scripts/*.zsh
 do
-  source $f
+	if [[ "$f" != "*keybinds.zsh" ]]; then
+		source $f
+	fi
 done
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
@@ -57,12 +58,6 @@ bashcompinit
 
 [ -s "/opt/vcpkg/scripts/vcpkg_completion.zsh" ] && source /opt/vcpkg/scripts/vcpkg_completion.zsh
 
-# bun completions
-[ -s "/home/rek/.bun/_bun" ] && source "/home/rek/.bun/_bun"
-
-# bun completions
-[ -s "/Users/rek/.bun/_bun" ] && source "/Users/rek/.bun/_bun"
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
@@ -72,3 +67,4 @@ if [[ $(uname) == "Darwin" ]]; then
 	export PATH="/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
 fi
 
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
