@@ -1,4 +1,6 @@
 pfetch
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -15,12 +17,11 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 for f in ~/.dotfiles/zsh-scripts/*.zsh
 do
-	if [[ "$f" != "*keybinds.zsh" ]]; then
+	if [[ "$f" != *"keybinds.zsh" ]]; then
 		source $f
 	fi
 done
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
@@ -67,4 +68,4 @@ if [[ $(uname) == "Darwin" ]]; then
 	export PATH="/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH"
 fi
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.dotfiles/zsh-scripts/keybinds.zsh
