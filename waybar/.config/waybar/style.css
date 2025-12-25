@@ -1,0 +1,56 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: 'VictorMono NF', 'Font Awesome 6 Free', 'Material Icons', 'Noto Color Emoji', 'monospace';
+  font-size: 12px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: #080420;
+  color: #ffffff;
+}
+
+/* Modules */
+#workspaces button {
+  padding: 0 6px;
+  color: #707880;
+}
+
+#workspaces button.focused {
+  background: #29204b;
+  color: #ffffff;
+  border-bottom: 2px solid #4d9dff;
+}
+
+#workspaces button.urgent {
+  background: #f03008;
+  color: #ffffff;
+}
+
+#disk,
+#pulseaudio,
+#cpu,
+#memory,
+#clock,
+#tray {
+  padding: 0 6px;
+}
+
+/* Prefix colors */
+#pulseaudio {
+  color: #4d9dff;
+}
+
+#cpu {
+  color: #4d9dff;
+}
+
+#memory {
+  color: #4d9dff;
+}
+
+#clock {
+  color: #4d9dff;
+}
+

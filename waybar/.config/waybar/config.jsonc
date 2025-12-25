@@ -1,0 +1,56 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 26,
+  "spacing": 6,
+
+  "modules-left": [
+    "sway/workspaces",
+    "disk"
+  ],
+
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "clock"
+  ],
+
+  "sway/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": false,
+    "format": "{name}"
+  },
+
+  "disk": {
+    "interval": 25,
+    "format": "{path} {percentage_used}%",
+    "path": "/"
+  },
+
+  "tray": {
+    "spacing": 6
+  },
+
+  "pulseaudio": {
+    "format": "V:{volume}%",
+    "format-muted": "🔇",
+    "scroll-step": 5
+  },
+
+  "cpu": {
+    "interval": 2,
+    "format": "C:{usage}%"
+  },
+
+  "memory": {
+    "interval": 2,
+    "format": "R:{percentage}%"
+  },
+
+  "clock": {
+    "interval": 1,
+    "format": "{:%Y/%m/%d %H:%M:%S}"
+  }
+}

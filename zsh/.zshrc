@@ -1,4 +1,4 @@
-pfetch
+fastfetch
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -44,6 +44,8 @@ alias :qa=exit
 alias :wq=exit
 alias :wqa=exit
 
+alias lg=lazygit
+
 alias vim=nvim
 alias siopao=bun
 alias siopaox=bunx
@@ -69,3 +71,13 @@ if [[ $(uname) == "Darwin" ]]; then
 fi
 
 source ~/.dotfiles/zsh-scripts/keybinds.zsh
+
+# fnm
+FNM_PATH="/home/rek/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+# bun completions
+[ -s "/home/rek/.bun/_bun" ] && source "/home/rek/.bun/_bun"
