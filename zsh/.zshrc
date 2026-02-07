@@ -56,7 +56,7 @@ function gp {
 }
 
 function gP {
-  alias gP=git push
+  git push
 }
 
 function gc {
@@ -117,3 +117,6 @@ export PATH="$PATH:/usr/local/share/android-commandlinetools/platform-tools"
 export ANDROID_SDK_ROOT="$HOME/Android"
 
 export GPG_TTY=$(tty)
+
+# opencode
+export PATH=/home/rek/.opencode/bin:$PATH

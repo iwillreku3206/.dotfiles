@@ -220,6 +220,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.opt.runtimepath:append("/home/rek/.local/share/nvim/site")
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -524,8 +526,8 @@ require("lazy").setup({
 			-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
 			-- and elegantly composed help section, `:help lsp-vs-treesitter`
 
-			require("lspconfig").dartls.setup({})
-			require("lspconfig").slint_lsp.setup({})
+			vim.lsp.config("dartls", {})
+			vim.lsp.config("slint_lsp", {})
 			--  This function gets run when an LSP attaches to a particular buffer.
 			--    That is to say, every time a new file is opened that is associated with
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -750,7 +752,7 @@ require("lazy").setup({
 						-- by the server configuration above. Useful when disabling
 						-- certain features of an LSP (for example, turning off formatting for ts_ls)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
+						vim.lsp.config(server_name, server)
 					end,
 				},
 			})
@@ -969,7 +971,7 @@ require("lazy").setup({
 	{ -- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		main = "nvim-treesitter.config", -- Sets main module to use for opts
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
@@ -1032,12 +1034,6 @@ require("lazy").setup({
 			},
 			indent = { enable = true, disable = { "ruby" } },
 		},
-		-- There are additional nvim-treesitter modules that you can use to interact
-		-- with nvim-treesitter. You should go explore a few and see what interests you:
-		--
-		--    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-		--    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-		--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 	},
 
 	-- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -1086,6 +1082,42 @@ require("lazy").setup({
 		},
 	},
 })
+
+local function header_toggle()
+	local bufname = vim.api.nvim_buf_get_name(0)
+	if bufname == "" then
+		return
+	end
+
+	local base = vim.fn.fnamemodify(bufname, ":r")
+	local ext = vim.fn.fnamemodify(bufname, ":e")
+
+	local headers = { "h", "hpp" }
+	local sources = { "c", "cpp", "cc", "cxx" }
+
+	local function try_extensions(list)
+		for _, e in ipairs(list) do
+			local candidate = base .. "." .. e
+			if vim.fn.filereadable(candidate) == 1 then
+				vim.cmd.edit(candidate)
+				return true
+			end
+		end
+		return false
+	end
+
+	if vim.tbl_contains(sources, ext) then
+		if not try_extensions(headers) then
+			vim.notify("No header file found", vim.log.levels.WARN)
+		end
+	elseif vim.tbl_contains(headers, ext) then
+		if not try_extensions(sources) then
+			vim.notify("No source file found", vim.log.levels.WARN)
+		end
+	end
+end
+
+vim.keymap.set("n", "<leader>h", header_toggle, { desc = "Toggle header/source" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

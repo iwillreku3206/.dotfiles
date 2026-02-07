@@ -215,3 +215,6 @@ input "type:pointer" pointer_accel 0
 ### Workspace assignment
 workspace 1 output DP-2
 workspace 11 output HDMI-A-1
+
+for_window [app_id="flameshot"] floating enable, border pixel 0, sticky enable, fullscreen enable global
+for_window [class="flameshot"] floating enable, border pixel 0, sticky enable, fullscreen enable global
