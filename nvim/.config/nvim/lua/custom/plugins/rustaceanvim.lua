@@ -1,8 +1,8 @@
 return {
-  {
-    'mrcjkb/rustaceanvim',
-    version = '^4', -- Recommended
-    ft = { 'rust' },
-    lazy = true
-  }
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^7", -- Recommended
+		ft = { "rust" },
+		lazy = true,
+	},
 }

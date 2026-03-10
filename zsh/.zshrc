@@ -1,6 +1,7 @@
-pfetch
-
-source "$HOME/.dotfiles/zsh-scripts/dotenv.zsh"
+fastfetch
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -50,7 +51,7 @@ function gp {
 }
 
 function gP {
-  alias gP=git push
+  git push
 }
 
 function gc {
@@ -60,6 +61,8 @@ function gc {
   fi
   git commit -m "$1"
 }
+
+alias lg=lazygit
 
 alias vim=nvim
 alias siopao=bun
@@ -89,6 +92,15 @@ fi
 
 source ~/.dotfiles/zsh-scripts/keybinds.zsh
 
+# fnm
+FNM_PATH="/home/rek/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+# bun completions
+[ -s "/home/rek/.bun/_bun" ] && source "/home/rek/.bun/_bun"
 # bun completions
 [ -s "/Users/rek/.bun/_bun" ] && source "/Users/rek/.bun/_bun"
 
@@ -102,7 +114,7 @@ export ANDROID_SDK_ROOT="$HOME/Android"
 export GPG_TTY=$(tty)
 
 # opencode
-export PATH=/Users/rek/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
 
 # fnm
 if command -v fnm &> /dev/null
