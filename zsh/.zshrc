@@ -37,11 +37,6 @@ export PATH=$PATH:$HOME/.cargo/bin
 export HOMEBREW_NO_AUTO_UPDATE=1 
 
 autoload -U add-zsh-hook
-# fnm
-if command -v fnm &> /dev/null
-then
-  eval "$(fnm env --use-on-cd)"
-fi
 
 
 # zsh completions
@@ -105,3 +100,12 @@ export PATH="$PATH:/usr/local/share/android-commandlinetools/platform-tools"
 export ANDROID_SDK_ROOT="$HOME/Android"
 
 export GPG_TTY=$(tty)
+
+# opencode
+export PATH=/Users/rek/.opencode/bin:$PATH
+
+# fnm
+if command -v fnm &> /dev/null
+then
+  eval "$(fnm env --use-on-cd)"
+fi
