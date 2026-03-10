@@ -1,0 +1,1 @@
+/home/rek/.dotfiles/nvim/.config/nvim/ftplugin/typescript.lua

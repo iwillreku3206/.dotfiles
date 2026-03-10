@@ -1,0 +1,3 @@
+[submodule "lsps/zenstack"]
+	path = lsps/zenstack
+	url = https://github.com/zenstackhq/zenstack
