@@ -1,49 +1,61 @@
 return {
 	{
-		"NickvanDyke/opencode.nvim",
+		"olimorris/codecompanion.nvim",
 		dependencies = {
-			-- Recommended for `ask()` and `select()`.
-			-- Required for `snacks` provider.
-			---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-			{ "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
 		},
-		config = function()
-			---@type opencode.Opts
-			vim.g.opencode_opts = {
-				-- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition" on the type or field.
-			}
-
-			-- Required for `opts.events.reload`.
-			vim.o.autoread = true
-
-			-- Recommended/example keymaps.
-			vim.keymap.set({ "n", "x" }, "<C-a>", function()
-				require("opencode").ask("@this: ", { submit = true })
-			end, { desc = "Ask opencode…" })
-			vim.keymap.set({ "n", "x" }, "<C-x>", function()
-				require("opencode").select()
-			end, { desc = "Execute opencode action…" })
-			vim.keymap.set({ "n", "t" }, "<C-.>", function()
-				require("opencode").toggle()
-			end, { desc = "Toggle opencode" })
-
-			vim.keymap.set({ "n", "x" }, "go", function()
-				return require("opencode").operator("@this ")
-			end, { desc = "Add range to opencode", expr = true })
-			vim.keymap.set("n", "goo", function()
-				return require("opencode").operator("@this ") .. "_"
-			end, { desc = "Add line to opencode", expr = true })
-
-			vim.keymap.set("n", "<S-C-u>", function()
-				require("opencode").command("session.half.page.up")
-			end, { desc = "Scroll opencode up" })
-			vim.keymap.set("n", "<S-C-d>", function()
-				require("opencode").command("session.half.page.down")
-			end, { desc = "Scroll opencode down" })
-
-			-- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o…".
-			vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
-			vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement under cursor", noremap = true })
-		end,
+		opts = {
+			interactions = {
+				chat = {
+					adapter = "ollama",
+					model = "moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M",
+					opts = {
+						completion_provider = "blink",
+					},
+					tools = {
+						["run_command"] = {
+							opts = {
+								require_approval_before = true,
+							},
+						},
+						opts = {
+							auto_submit_errors = true, -- Send any errors to the LLM automatically?
+							auto_submit_success = true, -- Send any successful output to the LLM automatically?
+						},
+					},
+				},
+				inline = {
+					adapter = "ollama",
+					model = "moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M",
+				},
+			},
+			adapters = {
+				http = {
+					ollama = function()
+						return require("codecompanion.adapters").extend("ollama", {
+							env = {
+								url = "http://gpu-vm.home.rinaldolee.com:11434", -- safe to publish, this is on my personal intranet
+							},
+							headers = {
+								["Content-Type"] = "application/json",
+							},
+							parameters = {
+								sync = true,
+							},
+							schema = {
+								model = {
+									default = "moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M",
+								},
+								keep_alive = {
+									default = "30m",
+								},
+							},
+						})
+					end,
+				},
+			},
+		},
+		lazy = false,
 	},
 }
