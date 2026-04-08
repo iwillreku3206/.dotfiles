@@ -821,7 +821,12 @@ require("lazy").setup({
 				-- python = { "isort", "black" },
 				--
 				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
+				javascript = { "prettierd" },
+				typescript = { "prettierd" },
+				javascriptreact = { "prettierd" },
+				typescriptreact = { "prettierd" },
+				svelte = { "prettierd" },
+				html = { "prettierd" },
 			},
 		},
 	},
@@ -908,6 +913,9 @@ require("lazy").setup({
 				default = { "lsp", "path", "snippets", "lazydev" },
 				providers = {
 					lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
+				},
+				per_filetype = {
+					codecompanion = { "codecompanion" },
 				},
 			},
 
@@ -1169,6 +1177,12 @@ local function header_toggle()
 end
 
 vim.keymap.set("n", "<leader>h", header_toggle, { desc = "Toggle header/source" })
+
+vim.keymap.set({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+vim.cmd([[cab cc CodeCompanion]])
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
