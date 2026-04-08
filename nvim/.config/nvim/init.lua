@@ -1132,6 +1132,9 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			lazy = "💤 ",
 		},
 	},
+  git = {
+    timeout = 300
+  }
 })
 
 local function header_toggle()
