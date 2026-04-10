@@ -1,3 +1,5 @@
+local model = "gemma4:26b"
+
 return {
 	{
 		"olimorris/codecompanion.nvim",
@@ -9,7 +11,7 @@ return {
 			interactions = {
 				chat = {
 					adapter = "ollama",
-					model = "moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M",
+					model = model,
 					opts = {
 						completion_provider = "blink",
 					},
@@ -27,7 +29,7 @@ return {
 				},
 				inline = {
 					adapter = "ollama",
-					model = "moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M",
+					model = model,
 				},
 			},
 			adapters = {
@@ -45,10 +47,10 @@ return {
 							},
 							schema = {
 								model = {
-									default = "moophlo/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q3_K_M",
+									default = model,
 								},
 								keep_alive = {
-									default = "30m",
+									default = "15m",
 								},
 							},
 						})
