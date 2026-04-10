@@ -545,7 +545,9 @@ require("lazy").setup({
 				},
 				filetypes = { "zmodel" },
 			})
+
 			vim.lsp.enable("zenstack")
+
 			--  This function gets run when an LSP attaches to a particular buffer.
 			--    That is to say, every time a new file is opened that is associated with
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
@@ -724,7 +726,6 @@ require("lazy").setup({
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
 				-- ts_ls = {},
 				--
-
 				lua_ls = {
 					-- cmd = { ... },
 					-- filetypes = { ... },
@@ -1140,9 +1141,9 @@ vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			lazy = "💤 ",
 		},
 	},
-  git = {
-    timeout = 300
-  }
+	git = {
+		timeout = 300,
+	},
 })
 
 local function header_toggle()
