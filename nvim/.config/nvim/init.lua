@@ -123,7 +123,7 @@ vim.filetype.add({
 })
 
 -- Don't make errors/warnings block
-require("vim._extui").enable({})
+require("vim._core.ui2").enable({})
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
