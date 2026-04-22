@@ -121,3 +121,7 @@ if command -v fnm &> /dev/null
 then
   eval "$(fnm env --use-on-cd)"
 fi
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/rek/.local/share/fnm/node-versions/v24.12.0/installation/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/rek/.local/share/fnm/node-versions/v24.12.0/installation/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh

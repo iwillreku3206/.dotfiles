@@ -1,4 +1,4 @@
-local model = "gemma4:26b"
+local model = "gemma4:31b"
 
 return {
 	{
@@ -51,6 +51,13 @@ return {
 								},
 								keep_alive = {
 									default = "15m",
+								},
+								options = {
+									default = {
+										temperature = 0.2,
+										top_p = 0.5,
+										top_k = 64,
+									},
 								},
 							},
 						})
