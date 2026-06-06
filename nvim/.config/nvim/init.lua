@@ -385,7 +385,6 @@ require("lazy").setup({
 					return vim.fn.executable("make") == 1
 				end,
 			},
-			{ "nvim-telescope/telescope-ui-select.nvim" },
 
 			-- Useful for getting pretty icons, but requires a Nerd Font.
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
@@ -540,7 +539,7 @@ require("lazy").setup({
 			vim.lsp.config("zenstack", {
 				cmd = {
 					"node",
-					os.getenv("HOME") .. "/.dotfiles/lsps/zenstack/packages/ide/vscode/dist/language-server.js",
+					os.getenv("HOME") .. "/.dotfiles/lsps/zenstack/packages/ide/vscode/dist/language-server.cjs",
 					"--stdio",
 				},
 				filetypes = { "zmodel" },
@@ -781,6 +780,11 @@ require("lazy").setup({
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						vim.lsp.config(server_name, server)
 					end,
+					-- ['ts_ls'] = function ()
+					--   vim.lsp.config('ts_ls', {
+					--
+					--   })
+					-- end
 				},
 			})
 		end,
