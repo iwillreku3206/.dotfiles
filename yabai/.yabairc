@@ -1,0 +1,15 @@
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+yabai -m config top_padding    			0
+yabai -m config bottom_padding 			0
+yabai -m config left_padding   			0
+yabai -m config right_padding  			0
+yabai -m config window_gap     			0
+
+yabai -m config layout 				bsp
+yabai -m config window_animation_duration    	0.0
+yabai -m config external_bar			all:12:0
+
+# league
+yabai -m rule --add app="League of Legends" manage=off

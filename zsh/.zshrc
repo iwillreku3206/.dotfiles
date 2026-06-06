@@ -93,7 +93,7 @@ fi
 source ~/.dotfiles/zsh-scripts/keybinds.zsh
 
 # fnm
-FNM_PATH="/home/rek/.local/share/fnm"
+FNM_PATH="$HOME/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
@@ -115,13 +115,3 @@ export GPG_TTY=$(tty)
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH
-
-# fnm
-if command -v fnm &> /dev/null
-then
-  eval "$(fnm env --use-on-cd)"
-fi
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /home/rek/.local/share/fnm/node-versions/v24.12.0/installation/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/rek/.local/share/fnm/node-versions/v24.12.0/installation/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
