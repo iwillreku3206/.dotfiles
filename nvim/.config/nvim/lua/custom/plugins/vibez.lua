@@ -1,5 +1,5 @@
 -- local model = "Qwen3.6-35B-A3B-UD-Q4_K_M"
-local model = "Qwen3.6-27B-Q3_K_S-MTP"
+-- local model = "Qwen3.6-27B-Q6_K"
 -- local model = "Qwen3-Coder-30B-A3B-Instruct-Q3_K_S"
 
 return {
@@ -37,8 +37,8 @@ return {
 			},
 			interactions = {
 				chat = {
-					adapter = "llama.cpp",
-					model = model,
+					adapter = "deepseek_adapter",
+					model = "deepseek-v4-pro",
 					opts = {
 						completion_provider = "blink",
 					},
@@ -55,8 +55,8 @@ return {
 					},
 				},
 				inline = {
-					adapter = "llama.cpp",
-					model = model,
+					adapter = "deepseek_adapter",
+					model = "deepseek-v4-pro",
 				},
 			},
 			adapters = {
@@ -92,7 +92,7 @@ return {
 					["llama.cpp"] = function()
 						return require("codecompanion.adapters").extend("openai_compatible", {
 							env = {
-								url = "http://gpu-vm.home.rinaldolee.com:5678",
+								url = "http://localhost:5678",
 								api_key = "TERM", -- Set LLAMA_API_KEY in your environment
 								chat_url = "/v1/chat/completions",
 							},
@@ -149,6 +149,29 @@ return {
 									end
 									return data
 								end,
+							},
+						})
+					end,
+					deepseek_adapter = function()
+						return require("codecompanion.adapters").extend("deepseek", {
+							env = {
+								api_key = "DEEPSEEK_API_KEY",
+							},
+						})
+					end,
+				},
+				acp = {
+					gemini_cli = function()
+						return require("codecompanion.adapters").extend("gemini_cli", {
+							commands = {
+								default = {
+									"gemini",
+									"--acp",
+								},
+							},
+							defaults = {
+								-- auth_method = "gemini-api-key",
+								timeout = 20000, -- 20 seconds
 							},
 						})
 					end,

@@ -93,3 +93,10 @@ export GPG_TTY=$(tty)
 export PATH=$HOME/.opencode/bin:$PATH
 source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/rek/.local/bin:$PATH"
+
+# bun completions
+[ -s "/Users/rek/.bun/_bun" ] && source "/Users/rek/.bun/_bun"
